@@ -1,24 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App flex-col flex m-8 justify-center align-middle w-screen h-screen">
+      <input placeholder="Your name" type="text" className="text-white border-gray-50 border-4 py-10 px-6 text-grey-darkest text-center text-5xl rounded-md bg-gray-800 border-dashed " />
+      <div className="m-8 max-w-md text-white border-gray-50 border-4 py-10 px-6 text-grey-darkest text-center text-5xl rounded-md bg-gray-800" >
+        Java
+      </div>
     </div>
   );
 }
