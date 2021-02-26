@@ -7,6 +7,8 @@ type TimerState = {
 type TimerProps = TimerState;
 
 export class Timer extends React.Component<TimerProps, TimerState> {
+  private interval: any;
+
   constructor(props: TimerProps) {
     super(props);
     this.state = { time: props.time }
@@ -17,15 +19,19 @@ export class Timer extends React.Component<TimerProps, TimerState> {
   }
 
   componentDidMount() {
-    const interval = setInterval(() => {
+    this.interval = setInterval(() => {
       if (this.state.time === 1) {
-        clearInterval(interval);
+        clearInterval(this.interval);
       }
 
       this.setState((state: TimerState) => {
         return { time: state.time - 1 }
       })
     }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 }
 
