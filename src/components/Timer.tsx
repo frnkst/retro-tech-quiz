@@ -17,11 +17,15 @@ export class Timer extends React.Component<TimerProps, TimerState> {
   }
 
   componentDidMount() {
-    setInterval(() => {
+    const interval = setInterval(() => {
+      if (this.state.time === 1) {
+        clearInterval(interval);
+      }
+
       this.setState((state: TimerState) => {
         return { time: state.time - 1 }
       })
-    }, 1000)
+    }, 1000);
   }
 }
 
