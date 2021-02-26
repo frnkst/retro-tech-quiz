@@ -19,7 +19,16 @@ test('count down the seconds', () => {
   render(<Timer time={5} />);
 
   expect(screen.getByText("00:05")).toBeInTheDocument();
-  jest.advanceTimersByTime(3000)
+  jest.advanceTimersByTime(3000);
   expect(screen.getByText("00:02")).toBeInTheDocument();
 });
+
+test('timer stops at zero', () => {
+  jest.useFakeTimers();
+  render(<Timer time={5} />);
+
+  expect(screen.getByText("00:05")).toBeInTheDocument();
+  jest.advanceTimersByTime(9000);
+  expect(screen.getByText("00:00")).toBeInTheDocument();
+})
 
