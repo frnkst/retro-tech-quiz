@@ -25,11 +25,9 @@ jobs:
       - name: install
         run: yarn
       
-      # Runs a single command using the runners shell
       - name: build
         run: yarn build
 
-      # Runs a single command using the runners shell
       - name: test
-        run: yarn test
+        run: yarn test:coverage && jest-coverage-badges
 
