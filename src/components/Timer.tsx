@@ -1,43 +1,50 @@
-import React from "react";
+import React from 'react'
 
 type TimerState = {
-  time: number
+    time: number
 }
 
-type TimerProps = TimerState;
+type TimerProps = TimerState
 
 export class Timer extends React.Component<TimerProps, TimerState> {
-  private interval: any;
+    private interval: any
 
-  constructor(props: TimerProps) {
-    super(props);
-    this.state = { time: props.time }
-  }
+    constructor(props: TimerProps) {
+        super(props)
+        this.state = { time: props.time }
+    }
 
-  render() {
-    return <><div className="retro-font text-6xl text-yellow-300 m-10">{ formatTime(this.state.time) }</div></>
-  }
+    render() {
+        return (
+            <>
+                <div className="retro-font text-6xl text-yellow-300 m-10">
+                    {formatTime(this.state.time)}
+                </div>
+            </>
+        )
+    }
 
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      if (this.state.time === 1) {
-        clearInterval(this.interval);
-      }
+    componentDidMount() {
+        this.interval = setInterval(() => {
+            if (this.state.time === 1) {
+                clearInterval(this.interval)
+            }
 
-      this.setState((state: TimerState) => {
-        return { time: state.time - 1 }
-      })
-    }, 1000);
-  }
+            this.setState((state: TimerState) => {
+                return { time: state.time - 1 }
+            })
+        }, 1000)
+    }
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+    componentWillUnmount() {
+        clearInterval(this.interval)
+    }
 }
 
 function formatTime(timeInSeconds: number) {
-  const minutes = Math.floor(timeInSeconds / 60);
-  const seconds = timeInSeconds % 60;
-  return `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds }`
+    const minutes = Math.floor(timeInSeconds / 60)
+    const seconds = timeInSeconds % 60
+    return `${minutes < 10 ? '0' + minutes : minutes}:${
+        seconds < 10 ? '0' + seconds : seconds
+    }`
 }
-
