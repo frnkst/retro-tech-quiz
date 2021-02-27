@@ -2,7 +2,6 @@ name: CI
 
 on:
     push:
-
     workflow_dispatch:
 
 jobs:
@@ -19,8 +18,4 @@ jobs:
               run: yarn build
 
             - name: test
-              run: yarn test:coverage && yarn jest-coverage-badges
-
-            - uses: stefanzweifel/git-auto-commit-action@v4
-              with:
-                  commit_message: Update coverage badges (Auto commit)
+              run: yarn test:coverage
