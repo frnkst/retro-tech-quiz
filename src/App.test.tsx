@@ -34,3 +34,9 @@ test('clear the placeholder on focus', () => {
     inputField.focus()
     expect(screen.queryByPlaceholderText('Name')).not.toBeInTheDocument()
 })
+
+test('show let me in', () => {
+    render(<App />)
+
+    expect(screen.getByText('Let me in')).toBeInTheDocument()
+})
