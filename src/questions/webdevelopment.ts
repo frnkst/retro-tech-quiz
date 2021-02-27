@@ -1,4 +1,4 @@
-import { Category } from './allquestions'
+import { Category } from '../components/Categories'
 
 export const webdevelopment: Category = {
     name: 'Web Development',

@@ -8,10 +8,16 @@ test('show the countdown', () => {
     expect(screen.getByText('16:40')).toBeInTheDocument()
 })
 
-test('should show the high score', () => {
+test('show the high score', () => {
     render(<App />)
 
     expect(screen.getByText('000000')).toBeInTheDocument()
+})
+
+test('show the title', () => {
+    render(<App />)
+
+    expect(screen.getByText('Are you ready?')).toBeInTheDocument()
 })
 
 test('render the input box', () => {
@@ -22,11 +28,9 @@ test('render the input box', () => {
 
 test('clear the placeholder on focus', () => {
     render(<App />)
-    const inputField = screen.getByPlaceholderText('enter your name')
+    const inputField = screen.getByPlaceholderText('Name')
 
-    expect(screen.getByPlaceholderText('enter your name')).toBeInTheDocument()
+    expect(inputField).toBeInTheDocument()
     inputField.focus()
-    expect(
-        screen.queryByPlaceholderText('enter your name')
-    ).not.toBeInTheDocument()
+    expect(screen.queryByPlaceholderText('Name')).not.toBeInTheDocument()
 })

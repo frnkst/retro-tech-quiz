@@ -1,4 +1,4 @@
-import { Category } from './allquestions'
+import { Category } from '../components/Categories'
 
 export const javascript: Category = {
     name: 'JavaScript',
