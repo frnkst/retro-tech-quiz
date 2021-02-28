@@ -4,6 +4,7 @@ import { kotlin } from '../questions/kotlin'
 import { typescript } from '../questions/typescript'
 import { cicd } from '../questions/cicd'
 import { git } from '../questions/git'
+import { java } from '../questions/java'
 
 export function Categories() {
     return (
@@ -42,5 +43,5 @@ export type Category = {
 }
 
 function getAllCategories() {
-    return [javascript, webdevelopment, kotlin, typescript, git, cicd]
+    return [javascript, webdevelopment, kotlin, java, typescript, git, cicd]
 }
