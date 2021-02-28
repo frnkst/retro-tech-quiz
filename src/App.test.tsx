@@ -26,15 +26,6 @@ test('render the input box', () => {
     expect(screen.getByPlaceholderText('enter your name')).toBeInTheDocument()
 })
 
-test('clear the placeholder on focus', () => {
-    render(<App />)
-    const inputField = screen.getByPlaceholderText('Name')
-
-    expect(inputField).toBeInTheDocument()
-    inputField.focus()
-    expect(screen.queryByPlaceholderText('Name')).not.toBeInTheDocument()
-})
-
 test('show let me in', () => {
     render(<App />)
 

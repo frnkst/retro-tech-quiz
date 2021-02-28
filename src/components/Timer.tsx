@@ -17,7 +17,7 @@ export class Timer extends React.Component<TimerProps, TimerState> {
     render() {
         return (
             <>
-                <div className="retro-font text-6xl text-yellow-300 m-10">
+                <div className="retro-font md:text-6xl sm:text-3xl text-yellow-300 m-10">
                     {formatTime(this.state.time)}
                 </div>
             </>
