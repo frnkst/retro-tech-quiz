@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useInterval } from '../custom-hooks/use-interval'
 
 type TimerState = {
     time: number
@@ -6,39 +7,23 @@ type TimerState = {
 
 type TimerProps = TimerState
 
-export class Timer extends React.Component<TimerProps, TimerState> {
-    private interval: any
+export function Timer({ time }: TimerProps) {
+    const [currentTime, setTime] = useState(time)
 
-    constructor(props: TimerProps) {
-        super(props)
-        this.state = { time: props.time }
-    }
+    useInterval(
+        () => {
+            setTime(currentTime - 1)
+        },
+        currentTime > 0 ? 1000 : null
+    )
 
-    render() {
-        return (
-            <>
-                <div className="retro-font md:text-6xl sm:text-3xl text-yellow-300 m-10">
-                    {formatTime(this.state.time)}
-                </div>
-            </>
-        )
-    }
-
-    componentDidMount() {
-        this.interval = setInterval(() => {
-            if (this.state.time === 1) {
-                clearInterval(this.interval)
-            }
-
-            this.setState((state: TimerState) => {
-                return { time: state.time - 1 }
-            })
-        }, 1000)
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.interval)
-    }
+    return (
+        <>
+            <div className="retro-font md:text-6xl sm:text-3xl text-yellow-300 m-10">
+                {formatTime(currentTime)}
+            </div>
+        </>
+    )
 }
 
 function formatTime(timeInSeconds: number) {
