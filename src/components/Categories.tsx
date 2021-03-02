@@ -53,6 +53,6 @@ export type Category = {
     ]
 }
 
-function getAllCategories() {
+export function getAllCategories() {
     return [javascript, webdevelopment, kotlin, java, typescript, git, cicd]
 }
