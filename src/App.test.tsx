@@ -29,5 +29,5 @@ test('render the input box', () => {
 test('show let me in', () => {
     render(<App />)
 
-    expect(screen.getByText('Let me in')).toBeInTheDocument()
+    expect(screen.getByText('Start')).toBeInTheDocument()
 })
