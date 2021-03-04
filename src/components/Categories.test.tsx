@@ -5,13 +5,13 @@ import userEvent from '@testing-library/user-event'
 
 test('show the categories', () => {
     render(<Categories />)
-    expect(screen.getByText('JavaScript')).toBeInTheDocument()
-    expect(screen.getByText('Web Development')).toBeInTheDocument()
-    expect(screen.getByText('Kotlin')).toBeInTheDocument()
-    expect(screen.getByText('TypeScript')).toBeInTheDocument()
-    expect(screen.getByText('Java')).toBeInTheDocument()
-    expect(screen.getByText('CI/CD')).toBeInTheDocument()
-    expect(screen.getByText('Git')).toBeInTheDocument()
+    expect(screen.getByText('JavaScript')).toBeVisible()
+    expect(screen.getByText('Web Development')).toBeVisible()
+    expect(screen.getByText('Kotlin')).toBeVisible()
+    expect(screen.getByText('TypeScript')).toBeVisible()
+    expect(screen.getByText('Java')).toBeVisible()
+    expect(screen.getByText('CI/CD')).toBeVisible()
+    expect(screen.getByText('Git')).toBeVisible()
 })
 
 test('select a category on click', () => {
