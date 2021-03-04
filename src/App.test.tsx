@@ -3,31 +3,31 @@ import { render, screen } from '@testing-library/react'
 import App from './App'
 
 test('show the countdown', () => {
-    render(<App />)
+  render(<App />)
 
-    expect(screen.getByText('16:40')).toBeVisible()
+  expect(screen.getByText('16:40')).toBeVisible()
 })
 
 test('show the high score', () => {
-    render(<App />)
+  render(<App />)
 
-    expect(screen.getByText('000000')).toBeVisible()
+  expect(screen.getByText('000000')).toBeVisible()
 })
 
 test('show the title', () => {
-    render(<App />)
+  render(<App />)
 
-    expect(screen.getByText('Are you ready?')).toBeVisible()
+  expect(screen.getByText('Are you ready?')).toBeVisible()
 })
 
 test('render the input box', () => {
-    render(<App />)
+  render(<App />)
 
-    expect(screen.getByPlaceholderText('enter your name')).toBeVisible()
+  expect(screen.getByPlaceholderText('enter your name')).toBeVisible()
 })
 
 test('show let me in', () => {
-    render(<App />)
+  render(<App />)
 
-    expect(screen.getByText('Start')).toBeVisible()
+  expect(screen.getByText('Start')).toBeVisible()
 })
