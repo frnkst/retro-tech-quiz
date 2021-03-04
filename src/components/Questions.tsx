@@ -1,36 +1,45 @@
 import { Timer } from './Timer'
 import { Score } from './Score'
-import { Category } from './Categories'
+import { Category, Question } from './Categories'
+import { useRef } from 'react'
 
 type QuestionProps = {
   categories: Category[]
 }
 
+let question: Question | undefined
+
 export function Questions({ categories }: QuestionProps) {
-  const selectedCategories = getAllSelectedCategories(categories)
-  const question = getRandomQuestion(selectedCategories[0])
+  const questionNumber = useRef(0)
 
-  return (
-    <>
-      <Timer time={1000} />
-      <Score />
-      <div>{question.question}</div>
-      <div>{question.correct}</div>
-      <div>{question.wrong[0]}</div>
-      <div>{question.wrong[1]}</div>
-    </>
-  )
+  if (!question) {
+    question = getNextQuestion(categories, 0)
+    return <></>
+  } else {
+    return (
+      <>
+        <Timer time={1000} />
+        <Score />
+        <div>{question.question}</div>
+        <div>{question.correct}</div>
+        <div>{question.wrong[0]}</div>
+        <div>{question.wrong[1]}</div>
+
+        <button
+          onClick={() =>
+            (question = getNextQuestion(
+              categories,
+              (questionNumber.current += 1)
+            ))
+          }
+        >
+          next
+        </button>
+      </>
+    )
+  }
 }
 
-export function getAllSelectedCategories(categories: Category[]) {
-  return categories.filter((category) => category.isSelected)
-}
-
-function getRandomQuestion(category: Category) {
-  const randomIndex = randomIntFromInterval(0, category.questions.length - 1)
-  return category.questions[randomIndex]
-}
-
-function randomIntFromInterval(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1) + min)
+function getNextQuestion(categories: Category[], questionNumber: number) {
+  return categories[0].questions[questionNumber]
 }

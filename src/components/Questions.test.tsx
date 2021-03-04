@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Questions } from './Questions'
 import { Category } from './Categories'
+import userEvent from '@testing-library/user-event'
 
 beforeEach(() => {
   render(<Questions categories={getSomeCategories()} />)
@@ -15,22 +16,20 @@ test('show the score', () => {
   expect(screen.getByText('000000')).toBeVisible()
 })
 
-describe('show a question', () => {
-  test('show the question', () => {
-    expect(screen.getByText('question')).toBeVisible()
-  })
+test('show the first question and answers', () => {
+  expect(screen.getByText('first question')).toBeVisible()
+  expect(screen.getByText('first correct answer')).toBeVisible()
+  expect(screen.getByText('first wrong answer 1')).toBeVisible()
+  expect(screen.getByText('first wrong answer 2')).toBeVisible()
+})
 
-  test('show the correct answer', () => {
-    expect(screen.getByText('correct answer')).toBeVisible()
-  })
+test('show the second question and answers when clicking next', () => {
+  userEvent.click(screen.getByText('next'))
 
-  test('show the wrong answer 1', () => {
-    expect(screen.getByText('wrong answer 1')).toBeVisible()
-  })
-
-  test('show the wrong answer 2', () => {
-    expect(screen.getByText('wrong answer 2')).toBeVisible()
-  })
+  expect(screen.getByText('second question')).toBeVisible()
+  expect(screen.getByText('second correct answer')).toBeVisible()
+  expect(screen.getByText('second wrong answer 1')).toBeVisible()
+  expect(screen.getByText('second wrong answer 2')).toBeVisible()
 })
 
 function getSomeCategories(): Category[] {
@@ -41,9 +40,15 @@ function getSomeCategories(): Category[] {
       questions: [
         {
           level: 1,
-          question: 'question',
-          correct: 'correct answer',
-          wrong: ['wrong answer 1', 'wrong answer 2'],
+          question: 'first question',
+          correct: 'first correct answer',
+          wrong: ['first wrong answer 1', 'first wrong answer 2'],
+        },
+        {
+          level: 1,
+          question: 'second question',
+          correct: 'second correct answer',
+          wrong: ['second wrong answer 1', 'second wrong answer 2'],
         },
       ],
     },
