@@ -41,14 +41,14 @@ export function Categories() {
 export type Category = {
   name: string
   isSelected?: boolean
-  questions: [
-    {
-      level: 1 | 2 | 3 | 4 | 5
-      question: string
-      correct: string
-      wrong: string[]
-    }
-  ]
+  questions: Question[]
+}
+
+export type Question = {
+  level: 1 | 2 | 3 | 4 | 5
+  question: string
+  correct: string
+  wrong: string[]
 }
 
 export function getAllCategories() {
