@@ -6,18 +6,18 @@ import { Questions } from './components/Questions'
 import { getAllCategories } from './components/Categories'
 
 export default function App() {
-    return (
-        <>
-            <Router>
-                <Switch>
-                    <Route path="/questions">
-                        <Questions categories={getAllCategories()} />
-                    </Route>
-                    <Route exact path="/">
-                        <Start />
-                    </Route>
-                </Switch>
-            </Router>
-        </>
-    )
+  return (
+    <>
+      <Router>
+        <Switch>
+          <Route path="/questions">
+            <Questions categories={getAllCategories()} />
+          </Route>
+          <Route exact path="/">
+            <Start />
+          </Route>
+        </Switch>
+      </Router>
+    </>
+  )
 }
