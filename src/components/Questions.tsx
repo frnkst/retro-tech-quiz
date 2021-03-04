@@ -1,9 +1,13 @@
 import { Timer } from './Timer'
 import { Score } from './Score'
-import { Category, getAllCategories } from './Categories'
+import { Category } from './Categories'
 
-export function Questions() {
-    const selectedCategories = getAllSelectedCategories()
+type QuestionProps = {
+    categories: Category[]
+}
+
+export function Questions({ categories }: QuestionProps) {
+    const selectedCategories = getAllSelectedCategories(categories)
     const question = getRandomQuestion(selectedCategories[0])
 
     return (
@@ -18,8 +22,8 @@ export function Questions() {
     )
 }
 
-function getAllSelectedCategories() {
-    return getAllCategories().filter((category) => category.isSelected)
+export function getAllSelectedCategories(categories: Category[]) {
+    return categories.filter((category) => category.isSelected)
 }
 
 function getRandomQuestion(category: Category) {
