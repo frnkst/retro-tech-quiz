@@ -1,6 +1,6 @@
-import { Category } from '../components/Categories'
+import { Topic } from '../components/Categories'
 
-export const cicd: Category = {
+export const cicd: Topic = {
   name: 'CI/CD',
   questions: [
     {

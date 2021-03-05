@@ -1,6 +1,6 @@
-import { Category } from '../components/Categories'
+import { Topic } from '../components/Categories'
 
-export const javascript: Category = {
+export const javascript: Topic = {
   name: 'JavaScript',
   questions: [
     {

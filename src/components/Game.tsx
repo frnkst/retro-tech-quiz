@@ -2,11 +2,13 @@ import { Timer } from './Timer'
 import { Score } from './Score'
 import { useRef, useState } from 'react'
 import { AskQuestion } from './AskQuestion'
-import { getAllCategories, Question } from './Categories'
+import { Topic, Question } from './Categories'
 
-export function Game() {
-  const allQuestions = getAllCategories()
+type GameProps = {
+  allQuestions: Topic[]
+}
 
+export function Game({ allQuestions }: GameProps) {
   const [questionNumber, setQuestionNumber] = useState(0)
 
   const categoryNumber = useRef(0)

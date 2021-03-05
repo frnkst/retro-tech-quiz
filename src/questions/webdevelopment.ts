@@ -1,6 +1,6 @@
-import { Category } from '../components/Categories'
+import { Topic } from '../components/Categories'
 
-export const webdevelopment: Category = {
+export const webdevelopment: Topic = {
   name: 'Web Development',
   questions: [
     {

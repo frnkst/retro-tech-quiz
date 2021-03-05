@@ -1,6 +1,6 @@
-import { Category } from '../components/Categories'
+import { Topic } from '../components/Categories'
 
-export const kotlin: Category = {
+export const kotlin: Topic = {
   name: 'Kotlin',
   questions: [
     {
