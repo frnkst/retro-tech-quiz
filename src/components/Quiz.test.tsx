@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
-import { Game } from './Game'
+import { Quiz } from './Quiz'
 import { Topic } from './Categories'
 import userEvent from '@testing-library/user-event'
 
 beforeEach(() => {
-  render(<Game allQuestions={getSomeQuestions()} />)
+  render(<Quiz allQuestions={getSomeQuestions()} />)
 })
 
 test('show the timer', () => {
