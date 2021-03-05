@@ -4,11 +4,11 @@ import { useState } from 'react'
 import { AskQuestion } from './AskQuestion'
 import { Topic, Question } from './Categories'
 
-type GameProps = {
-  allQuestions: Topic[]
+type QuizProps = {
+  topics: Topic[]
 }
 
-export function Quiz({ allQuestions }: GameProps) {
+export function Quiz({ topics }: QuizProps) {
   const [position, setPosition] = useState({
     topicNumber: 0,
     questionNumber: 0,
@@ -16,7 +16,7 @@ export function Quiz({ allQuestions }: GameProps) {
 
   function getQuestion(): Question {
     const { topicNumber, questionNumber } = position
-    const topic = allQuestions[topicNumber]
+    const topic = topics[topicNumber]
 
     if (questionNumber >= topic.questions.length) {
       setPosition({ topicNumber: topicNumber + 1, questionNumber: 0 })
@@ -27,19 +27,24 @@ export function Quiz({ allQuestions }: GameProps) {
 
   return (
     <>
-      <Timer time={1000} />
-      <Score />
-      <AskQuestion question={getQuestion()} />
-      <button
-        onClick={() =>
-          setPosition({
-            topicNumber: position.topicNumber,
-            questionNumber: position.questionNumber + 1,
-          })
-        }
-      >
-        Next
-      </button>
+      <div className="flex justify-between">
+        <Timer time={1000} />
+        <Score />
+      </div>
+      <div className="flex-row">
+        <AskQuestion question={getQuestion()} />
+        <button
+          className="md:text-6xl sm:text-3xl text-white m-10 w-screen"
+          onClick={() =>
+            setPosition({
+              topicNumber: position.topicNumber,
+              questionNumber: position.questionNumber + 1,
+            })
+          }
+        >
+          Next
+        </button>
+      </div>
     </>
   )
 }

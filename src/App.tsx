@@ -11,7 +11,7 @@ export default function App() {
       <Router>
         <Switch>
           <Route path="/questions">
-            <Quiz allQuestions={getAllQuestions()} />
+            <Quiz topics={getAllQuestions()} />
           </Route>
           <Route exact path="/">
             <Start />
