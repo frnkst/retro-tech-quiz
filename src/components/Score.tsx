@@ -1,9 +1,13 @@
 import React from 'react'
 
-export function Score() {
+type ScoreProps = {
+  score: string
+}
+
+export function Score({ score }: ScoreProps) {
   return (
     <div className="retro-font md:text-6xl sm:text-3xl text-yellow-300 m-10">
-      000000
+      {score}
     </div>
   )
 }

@@ -13,7 +13,7 @@ test('show the timer', () => {
 })
 
 test('show the score', () => {
-  expect(screen.getByText('000000')).toBeVisible()
+  expect(screen.getByText('0')).toBeVisible()
 })
 
 test('show a question', () => {
@@ -37,6 +37,11 @@ test('show the the result after the last question', () => {
   userEvent.click(screen.getByText('Next'))
 
   expect(screen.getByText('Show the result')).toBeVisible()
+})
+
+test('Update the score when clicking on the correct answer', () => {
+  userEvent.click(screen.getByText('correct 1'))
+  expect(screen.getByText('100')).toBeVisible()
 })
 
 function getSomeQuestions(): Topic[] {
