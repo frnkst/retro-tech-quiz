@@ -32,6 +32,13 @@ test('show the next question when clicking next', () => {
   expect(screen.getByText('wrong 2b')).toBeVisible()
 })
 
+test('show the the result after the last question', () => {
+  userEvent.click(screen.getByText('Next'))
+  userEvent.click(screen.getByText('Next'))
+
+  expect(screen.getByText('Show the result')).toBeVisible()
+})
+
 function getSomeQuestions(): Topic[] {
   return [
     {

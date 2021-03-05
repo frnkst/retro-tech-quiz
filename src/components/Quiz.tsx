@@ -3,6 +3,7 @@ import { Score } from './Score'
 import { useState } from 'react'
 import { AskQuestion } from './AskQuestion'
 import { Topic, Question } from './Categories'
+import { Result } from './Result'
 
 type QuizProps = {
   topics: Topic[]
@@ -23,6 +24,10 @@ export function Quiz({ topics }: QuizProps) {
     }
 
     return topic.questions[questionNumber]
+  }
+
+  if (position.topicNumber === topics.length) {
+    return <Result />
   }
 
   return (
