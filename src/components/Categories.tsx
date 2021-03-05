@@ -8,7 +8,7 @@ import { java } from '../questions/java'
 import { useState } from 'react'
 
 export function Categories() {
-  const [allCategories, setCategories] = useState(getAllCategories())
+  const [allCategories, setCategories] = useState(getAllQuestions())
 
   return (
     <div className="w-5/6 self-center py-10">
@@ -38,7 +38,7 @@ export function Categories() {
   )
 }
 
-export type Category = {
+export type Topic = {
   name: string
   isSelected?: boolean
   questions: Question[]
@@ -51,6 +51,6 @@ export type Question = {
   wrong: string[]
 }
 
-export function getAllCategories() {
+export function getAllQuestions() {
   return [javascript, webdevelopment, kotlin, java, typescript, git, cicd]
 }

@@ -1,6 +1,6 @@
-import { Category } from '../components/Categories'
+import { Topic } from '../components/Categories'
 
-export const git: Category = {
+export const git: Topic = {
   name: 'Git',
   questions: [
     {
