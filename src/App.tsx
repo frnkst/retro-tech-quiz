@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Start } from './components/Start'
-import { Game } from './components/Game'
+import { Quiz } from './components/Quiz'
 import { getAllQuestions } from './components/Categories'
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
       <Router>
         <Switch>
           <Route path="/questions">
-            <Game allQuestions={getAllQuestions()} />
+            <Quiz allQuestions={getAllQuestions()} />
           </Route>
           <Route exact path="/">
             <Start />
