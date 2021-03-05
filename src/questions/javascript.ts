@@ -9,5 +9,11 @@ export const javascript: Category = {
       correct: '10',
       wrong: ['20', '80'],
     },
+    {
+      level: 2,
+      question: 'Next question',
+      correct: '10',
+      wrong: ['20', '50000'],
+    },
   ],
 }
