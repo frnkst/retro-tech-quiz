@@ -5,7 +5,7 @@ import { Topic } from './Categories'
 import userEvent from '@testing-library/user-event'
 
 beforeEach(() => {
-  render(<Quiz allQuestions={getSomeQuestions()} />)
+  render(<Quiz topics={getSomeQuestions()} />)
 })
 
 test('show the timer', () => {
