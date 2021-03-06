@@ -3,7 +3,7 @@ import React from 'react'
 import { Categories } from './Categories'
 import userEvent from '@testing-library/user-event'
 
-test.only('show the categories', () => {
+test('show the categories', () => {
   render(
     <Categories
       allTopics={['JavaScript', 'Kotlin']}
@@ -16,20 +16,17 @@ test.only('show the categories', () => {
 })
 
 test('select a category on click', () => {
-  let selectedTopics = ['JavaScript']
+  const selectTopicsMock = jest.fn()
 
   render(
     <Categories
-      allTopics={['JavaScript, Kotlin']}
-      selectedTopics={selectedTopics}
-      selectTopics={(topics) => (selectedTopics = topics)}
+      allTopics={['JavaScript', 'Kotlin']}
+      selectedTopics={[]}
+      selectTopics={selectTopicsMock}
     />
   )
-  const javaScript = screen.getByText('JavaScript')
+  const kotlin = screen.getByText('Kotlin')
 
-  expect(javaScript).not.toHaveClass('bg-yellow-300')
-  userEvent.click(javaScript)
-  expect(javaScript).toHaveClass('bg-yellow-300')
-  userEvent.click(javaScript)
-  expect(javaScript).not.toHaveClass('bg-yellow-300')
+  userEvent.click(kotlin)
+  expect(selectTopicsMock).toHaveBeenCalledWith(['Kotlin'])
 })
