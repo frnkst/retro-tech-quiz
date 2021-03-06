@@ -5,31 +5,43 @@ import { typescript } from '../questions/typescript'
 import { cicd } from '../questions/cicd'
 import { git } from '../questions/git'
 import { java } from '../questions/java'
-import { useState } from 'react'
 
-export function Categories() {
-  const [allCategories, setCategories] = useState(getAllQuestions())
+type TopicsProps = {
+  selectTopics: (topic: string[]) => void
+  selectedTopics: string[]
+  allTopics: string[]
+}
 
+export function Categories({
+  selectTopics,
+  selectedTopics,
+  allTopics,
+}: TopicsProps) {
   return (
     <div className="w-5/6 self-center py-10">
       <span className="retro-font text-yellow-300 md:text-3xl sm:text-2xl">
         Choose your opponent
       </span>
       <div className="py-10 flex flex-wrap justify-center">
-        {allCategories.map((category) => {
+        {allTopics.map((topic: string) => {
           return (
             <div
-              key={category.name}
+              key={topic}
               data-testid="category"
               className={`${
-                category.isSelected ? 'bg-yellow-300' : 'bg-transparent'
+                selectedTopics.includes(topic)
+                  ? 'bg-yellow-300'
+                  : 'bg-transparent'
               } retro-font md:text-2xl sm:text-1xl h-20 m-5 text-white border-dashed border-white border-2 flex justify-center p-6`}
               onClick={() => {
-                category.isSelected = !category.isSelected
-                setCategories([...allCategories])
+                if (selectedTopics.includes(topic)) {
+                  selectTopics(selectedTopics.filter((e) => e !== topic))
+                } else {
+                  selectTopics([...selectedTopics, topic])
+                }
               }}
             >
-              <span className="self-center">{category.name}</span>
+              <span className="self-center">{topic}</span>
             </div>
           )
         })}
