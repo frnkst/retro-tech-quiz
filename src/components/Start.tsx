@@ -21,8 +21,8 @@ export function Start() {
     <>
       <div className="flex justify-between">
         <Timer time={1000} />
+        <Score score={'000000'} />
       </div>
-      <Score score={'000000'} />
       <div className="retro-font text-yellow-300 md:text-6xl sm:text-3xl w-screen flex py-10">
         <div className="text-center w-screen">Are you ready?</div>
       </div>
