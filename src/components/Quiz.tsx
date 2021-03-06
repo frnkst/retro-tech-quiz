@@ -4,12 +4,13 @@ import { useState } from 'react'
 import { AskQuestion } from './AskQuestion'
 import { Topic, Question } from './Categories'
 import { Result } from './Result'
+import { useLocation } from 'react-router-dom'
 
-type QuizProps = {
-  topics: Topic[]
-}
+export function Quiz() {
+  let location = useLocation()
+  //@ts-ignore
+  const topics = location.state.topics
 
-export function Quiz({ topics }: QuizProps) {
   const [position, setPosition] = useState({
     topicNumber: 0,
     questionNumber: 0,

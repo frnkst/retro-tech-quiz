@@ -1,10 +1,16 @@
 import { Timer } from './Timer'
-import { Categories } from './Categories'
-import { Link } from 'react-router-dom'
+import { Categories, getAllQuestions } from './Categories'
+import { useHistory } from 'react-router-dom'
 import React from 'react'
 import { Score } from './Score'
 
 export function Start() {
+  const history = useHistory()
+
+  function startGame() {
+    history.push('/questions', { topics: getAllQuestions() })
+  }
+
   return (
     <>
       <div className="flex justify-between">
@@ -28,9 +34,9 @@ export function Start() {
         <Categories />
       </div>
       <div className="retro-font text-yellow-300 md:text-3xl sm:text-2xl w-screen flex">
-        <Link className="text-center w-screen" to="/questions">
+        <button className="text-center w-screen" onClick={() => startGame()}>
           Start
-        </Link>
+        </button>
       </div>
     </>
   )
