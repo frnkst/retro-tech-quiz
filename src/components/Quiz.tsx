@@ -2,13 +2,16 @@ import { Timer } from './Timer'
 import { Score } from './Score'
 import { useState } from 'react'
 import { AskQuestion } from './AskQuestion'
-import { Topic, Question } from './Categories'
+import { Question, Topic } from './Categories'
 import { Result } from './Result'
 import { useLocation } from 'react-router-dom'
 
+type LocationState = {
+  topics: Topic[]
+}
+
 export function Quiz() {
-  let location = useLocation()
-  //@ts-ignore
+  let location = useLocation<LocationState>()
   const topics = location.state.topics
 
   const [position, setPosition] = useState({
