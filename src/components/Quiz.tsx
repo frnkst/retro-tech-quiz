@@ -52,7 +52,7 @@ export function Quiz() {
       <div className="flex-row">
         <AskQuestion question={getQuestion()} updateScore={addToScore} />
         <button
-          className="md:text-4xl sm:text-2xl text-yellow-300 m-10 w-screen retro-font outline-none"
+          className="md:text-4xl sm:text-2xl text-yellow-300 w-screen retro-font outline-none"
           onClick={() =>
             setPosition({
               ...position,
