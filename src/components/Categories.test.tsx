@@ -3,24 +3,33 @@ import React from 'react'
 import { Categories } from './Categories'
 import userEvent from '@testing-library/user-event'
 
-test('show the categories', () => {
-  render(<Categories />)
+test.only('show the categories', () => {
+  render(
+    <Categories
+      allTopics={['JavaScript', 'Kotlin']}
+      selectedTopics={[]}
+      selectTopics={() => void 0}
+    />
+  )
   expect(screen.getByText('JavaScript')).toBeVisible()
-  expect(screen.getByText('Web Development')).toBeVisible()
   expect(screen.getByText('Kotlin')).toBeVisible()
-  expect(screen.getByText('TypeScript')).toBeVisible()
-  expect(screen.getByText('Java')).toBeVisible()
-  expect(screen.getByText('CI/CD')).toBeVisible()
-  expect(screen.getByText('Git')).toBeVisible()
 })
 
 test('select a category on click', () => {
-  render(<Categories />)
-  const kotlin = screen.getAllByTestId('category')[0]
+  let selectedTopics = ['JavaScript']
 
-  expect(kotlin).not.toHaveClass('bg-yellow-300')
-  userEvent.click(kotlin)
-  expect(kotlin).toHaveClass('bg-yellow-300')
-  userEvent.click(kotlin)
-  expect(kotlin).not.toHaveClass('bg-yellow-300')
+  render(
+    <Categories
+      allTopics={['JavaScript, Kotlin']}
+      selectedTopics={selectedTopics}
+      selectTopics={(topics) => (selectedTopics = topics)}
+    />
+  )
+  const javaScript = screen.getByText('JavaScript')
+
+  expect(javaScript).not.toHaveClass('bg-yellow-300')
+  userEvent.click(javaScript)
+  expect(javaScript).toHaveClass('bg-yellow-300')
+  userEvent.click(javaScript)
+  expect(javaScript).not.toHaveClass('bg-yellow-300')
 })
