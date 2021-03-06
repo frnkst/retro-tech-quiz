@@ -1,15 +1,21 @@
 import { Timer } from './Timer'
 import { Categories, getAllQuestions } from './Categories'
 import { useHistory } from 'react-router-dom'
-import React from 'react'
+import React, { useState } from 'react'
 import { Score } from './Score'
 
 export function Start() {
+  const [selectedTopics, setSelectedTopics] = useState<string[]>([])
   const history = useHistory()
 
   function startGame() {
-    history.push('/questions', { topics: getAllQuestions() })
+    const filteredTopics = getAllQuestions().filter((topic) =>
+      selectedTopics.includes(topic.name)
+    )
+    history.push('/questions', { topics: filteredTopics })
   }
+
+  const allTopics = getAllQuestions().map((topic) => topic.name)
 
   return (
     <>
@@ -31,7 +37,11 @@ export function Start() {
           }
           className="retro-font self-center w-5/6 text-white py-10 px-6 text-grey-darkest text-center md:text-3xl sm:text-2xl rounded-md bg-gray-800 border-dashed placeholder-white border-4"
         />
-        <Categories />
+        <Categories
+          selectTopics={(topic: string[]) => setSelectedTopics([...topic])}
+          selectedTopics={selectedTopics}
+          allTopics={allTopics}
+        />
       </div>
       <div className="retro-font text-yellow-300 md:text-3xl sm:text-2xl w-screen flex">
         <button className="text-center w-screen" onClick={() => startGame()}>
