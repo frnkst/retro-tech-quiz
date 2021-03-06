@@ -3,9 +3,18 @@ import React from 'react'
 import { Quiz } from './Quiz'
 import { Topic } from './Categories'
 import userEvent from '@testing-library/user-event'
+import { createMemoryHistory } from 'history'
+import { Router } from 'react-router-dom'
 
 beforeEach(() => {
-  render(<Quiz topics={getSomeQuestions()} />)
+  const history = createMemoryHistory()
+  history.push('/questions', { topics: getSomeQuestions() })
+
+  render(
+    <Router history={history}>
+      <Quiz />
+    </Router>
+  )
 })
 
 test('show the timer', () => {
