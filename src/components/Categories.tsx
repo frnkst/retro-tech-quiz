@@ -63,6 +63,6 @@ export type Question = {
   wrong: string[]
 }
 
-export function getAllQuestions() {
+export function getAllTopics() {
   return [javascript, webdevelopment, kotlin, java, typescript, git, cicd]
 }

@@ -3,6 +3,8 @@ import React from 'react'
 import { Categories } from './Categories'
 import userEvent from '@testing-library/user-event'
 
+const selectTopicsMock = jest.fn()
+
 test('show the categories', () => {
   render(
     <Categories
@@ -16,8 +18,6 @@ test('show the categories', () => {
 })
 
 test('select a category on click', () => {
-  const selectTopicsMock = jest.fn()
-
   render(
     <Categories
       allTopics={['JavaScript', 'Kotlin']}
@@ -29,4 +29,20 @@ test('select a category on click', () => {
 
   userEvent.click(kotlin)
   expect(selectTopicsMock).toHaveBeenCalledWith(['Kotlin'])
+})
+
+test('when an already selected item is selected again it should remove it', () => {
+  render(
+    <Categories
+      allTopics={['JavaScript', 'Kotlin']}
+      selectedTopics={['Kotlin']}
+      selectTopics={selectTopicsMock}
+    />
+  )
+
+  const kotlin = screen.getByText('Kotlin')
+
+  userEvent.click(kotlin)
+
+  expect(selectTopicsMock).toHaveBeenCalledWith([])
 })

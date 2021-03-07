@@ -1,5 +1,5 @@
 import { Timer } from './Timer'
-import { Categories, getAllQuestions } from './Categories'
+import { Categories, getAllTopics } from './Categories'
 import { useHistory } from 'react-router-dom'
 import React, { useState } from 'react'
 import { Score } from './Score'
@@ -9,13 +9,13 @@ export function Start() {
   const history = useHistory()
 
   function startGame() {
-    const filteredTopics = getAllQuestions().filter((topic) =>
+    const filteredTopics = getAllTopics().filter((topic) =>
       selectedTopics.includes(topic.name)
     )
     history.push('/questions', { topics: filteredTopics })
   }
 
-  const allTopics = getAllQuestions().map((topic) => topic.name)
+  const allTopics = getAllTopics().map((topic) => topic.name)
 
   return (
     <>
