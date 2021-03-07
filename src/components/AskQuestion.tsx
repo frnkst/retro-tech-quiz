@@ -33,7 +33,7 @@ export const AskQuestion = React.memo(function ({
         {options.map((option) => (
           <div
             key={option.text}
-            className="border-2 p-5 m-5 text-center"
+            className="border-2 p-5 m-5 text-center cursor-pointer"
             onClick={() => option.correct && correctAnswerSelected()}
           >
             {option.text}

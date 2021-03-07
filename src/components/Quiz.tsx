@@ -8,11 +8,13 @@ import { useLocation } from 'react-router-dom'
 
 type LocationState = {
   topics: Topic[]
+  time: number
 }
 
 export function Quiz() {
   let location = useLocation<LocationState>()
   const topics = location.state.topics
+  const time = location.state.time
 
   const [position, setPosition] = useState({
     topicNumber: 0,
@@ -46,7 +48,7 @@ export function Quiz() {
   return (
     <>
       <div className="flex justify-between">
-        <Timer time={1000} />
+        <Timer time={time} />
         <Score score={position.score.toString()} />
       </div>
       <div className="flex-row">
@@ -54,8 +56,8 @@ export function Quiz() {
           question={getQuestion()}
           correctAnswerSelected={addToScore}
         />
-        <button
-          className="md:text-4xl sm:text-2xl text-yellow-300 w-screen retro-font outline-none"
+        <div
+          className="md:text-4xl sm:text-2xl text-yellow-300 w-screen retro-font text-center cursor-pointer"
           onClick={() =>
             setPosition({
               ...position,
@@ -65,7 +67,7 @@ export function Quiz() {
           }
         >
           Next
-        </button>
+        </div>
       </div>
     </>
   )

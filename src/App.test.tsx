@@ -2,10 +2,10 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import App from './App'
 
-test('show the countdown', () => {
+test('show the timer', () => {
   render(<App />)
 
-  expect(screen.getByText('16:40')).toBeVisible()
+  expect(screen.getByText('00:00')).toBeVisible()
 })
 
 test('show the high score', () => {
@@ -14,16 +14,10 @@ test('show the high score', () => {
   expect(screen.getByText('000000')).toBeVisible()
 })
 
-test('show the title', () => {
-  render(<App />)
-
-  expect(screen.getByText('Are you ready?')).toBeVisible()
-})
-
 test('render the input box', () => {
   render(<App />)
 
-  expect(screen.getByPlaceholderText('enter your name')).toBeVisible()
+  expect(screen.getByPlaceholderText('Player Name')).toBeVisible()
 })
 
 test('show let me in', () => {

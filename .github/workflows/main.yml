@@ -1,4 +1,4 @@
-name: Main branch
+name: main branch
 
 on:
   push:
@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: format
+        run: yarn prettier --write .
+
       - name: install
         run: yarn
 
@@ -21,8 +24,11 @@ jobs:
       - name: test
         run: yarn test:coverage && yarn jest-coverage-badges
 
-      - name: format prettier
-        run: yarn prettier --write .
+      - name: cypress
+        uses: cypress-io/github-action@v2
+        with:
+          build: yarn build
+          start: yarn start
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
