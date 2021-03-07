@@ -22,7 +22,7 @@ jobs:
         run: yarn build
 
       - name: test
-        run: yarn test:coverage && yarn jest-coverage-badges
+        run: yarn test:badges
 
       - name: cypress
         uses: cypress-io/github-action@v2
