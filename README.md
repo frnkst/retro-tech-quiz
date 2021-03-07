@@ -1,8 +1,4 @@
-![Alt text](./coverage/badge-branches.svg)
-![Alt text](./coverage/badge-functions.svg)
-![Alt text](./coverage/badge-lines.svg)
-![Alt text](./coverage/badge-statements.svg)
+# Retro Tech Quiz · ![main branch workflow](https://github.com/frnkst/funky-interview/actions/workflows/main.yml/badge.svg) ![dev brabch workflow](https://github.com/frnkst/funky-interview/actions/workflows/dev.yml/badge.svg) ![code coverage](./coverage/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-# Funky Interview
+See it live: https://funky-interview.vercel.app/
 
-Main branch gets deployed on update: https://funky-interview.vercel.app/

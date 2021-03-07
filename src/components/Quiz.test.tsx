@@ -8,7 +8,7 @@ import { Router } from 'react-router-dom'
 
 beforeEach(() => {
   const history = createMemoryHistory()
-  history.push('/questions', { topics: getSomeQuestions() })
+  history.push('/questions', { topics: getSomeQuestions(), time: 300 })
 
   render(
     <Router history={history}>
@@ -18,7 +18,7 @@ beforeEach(() => {
 })
 
 test('show the timer', () => {
-  expect(screen.getByText('16:40')).toBeVisible()
+  expect(screen.getByText('05:00')).toBeVisible()
 })
 
 test('show the score', () => {

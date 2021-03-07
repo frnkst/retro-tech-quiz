@@ -18,11 +18,8 @@ export function Categories({
   allTopics,
 }: TopicsProps) {
   return (
-    <div className="w-5/6 self-center py-10">
-      <span className="retro-font text-yellow-300 md:text-3xl sm:text-2xl">
-        Choose your opponent
-      </span>
-      <div className="py-10 flex flex-wrap justify-center">
+    <div className="w-5/6 self-center">
+      <div className="flex flex-wrap justify-center cursor-pointer">
         {allTopics.map((topic: string) => {
           return (
             <div
@@ -30,9 +27,9 @@ export function Categories({
               data-testid="category"
               className={`${
                 selectedTopics.includes(topic)
-                  ? 'bg-yellow-300'
-                  : 'bg-transparent'
-              } retro-font md:text-2xl sm:text-1xl h-20 m-5 text-white border-dashed border-white border-2 flex justify-center p-6`}
+                  ? 'text-blue-300 md:text-3xl'
+                  : 'text-white md:text-2xl'
+              } retro-font sm:text-1xl h-20 m-5 flex justify-center p-6`}
               onClick={() => {
                 if (selectedTopics.includes(topic)) {
                   selectTopics(selectedTopics.filter((e) => e !== topic))

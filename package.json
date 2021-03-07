@@ -26,7 +26,8 @@
     "build": "craco build",
     "test": "craco test",
     "test:coverage": "craco test --coverage  --watchAll=false",
-    "test:badges": "yarn test:coverage && jest-coverage-badges",
+    "test:badges": "yarn test:coverage && make-coverage-badge",
+    "cypress": "cypress run",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -49,9 +50,7 @@
   },
   "jest": {
     "coverageReporters": [
-      "json-summary",
-      "text",
-      "lcov"
+      "json-summary"
     ]
   },
   "prettier": {
@@ -64,8 +63,11 @@
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "@testing-library/dom": "^7.29.6",
     "autoprefixer": "^9",
+    "cypress": "^6.6.0",
     "enzyme": "^3.11.0",
+    "make-coverage-badge": "^1.2.0",
     "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "wait-on": "^5.2.1"
   }
 }

@@ -1,4 +1,4 @@
-name: All branches except main
+name: dev branches
 
 on:
   push:
@@ -20,3 +20,9 @@ jobs:
 
       - name: test
         run: yarn test:coverage
+
+      - name: cypress
+        uses: cypress-io/github-action@v2
+        with:
+          build: yarn build
+          start: yarn start
