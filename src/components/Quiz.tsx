@@ -50,7 +50,10 @@ export function Quiz() {
         <Score score={position.score.toString()} />
       </div>
       <div className="flex-row">
-        <AskQuestion question={getQuestion()} updateScore={addToScore} />
+        <AskQuestion
+          question={getQuestion()}
+          correctAnswerSelected={addToScore}
+        />
         <button
           className="md:text-4xl sm:text-2xl text-yellow-300 w-screen retro-font outline-none"
           onClick={() =>
