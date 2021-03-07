@@ -1,8 +1,9 @@
-name: CI
+name: Main branch
 
 on:
   push:
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
   build:
@@ -18,4 +19,11 @@ jobs:
         run: yarn build
 
       - name: test
-        run: yarn test:coverage
+        run: yarn test:coverage && yarn jest-coverage-badges
+
+      - name: format prettier
+        run: yarn prettier --write .
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update coverage badges and format with prettier (auto commit)
