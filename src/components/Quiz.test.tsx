@@ -8,7 +8,7 @@ import { Router } from 'react-router-dom'
 
 beforeEach(() => {
   const history = createMemoryHistory()
-  history.push('/questions', { topics: getSomeQuestions(), time: 300 })
+  history.push('/questions', { topics: someTopic(), time: 300 })
 
   render(
     <Router history={history}>
@@ -33,7 +33,7 @@ test('show a question', () => {
 })
 
 test('show the next question when clicking next', () => {
-  userEvent.click(screen.getByText('Next'))
+  userEvent.click(screen.getByText('-->'))
 
   expect(screen.getByText('question 2')).toBeVisible()
   expect(screen.getByText('correct 2')).toBeVisible()
@@ -41,19 +41,12 @@ test('show the next question when clicking next', () => {
   expect(screen.getByText('wrong 2b')).toBeVisible()
 })
 
-test('show the the result after the last question', () => {
-  userEvent.click(screen.getByText('Next'))
-  userEvent.click(screen.getByText('Next'))
-
-  expect(screen.getByText('Show the result')).toBeVisible()
-})
-
 test('Update the score when clicking on the correct answer', () => {
   userEvent.click(screen.getByText('correct 1'))
   expect(screen.getByText('100')).toBeVisible()
 })
 
-function getSomeQuestions(): Topic[] {
+function someTopic(): Topic[] {
   return [
     {
       name: 'test',
@@ -61,14 +54,34 @@ function getSomeQuestions(): Topic[] {
         {
           level: 1,
           question: 'question 1',
-          correct: 'correct 1',
-          wrong: ['wrong 1a', 'wrong 1b'],
+          options: [{
+            text: 'correct 1',
+            correct: true,
+            selected: false
+          }, {
+            text: 'wrong 1a',
+            selected: false
+          },
+            {
+              text: 'wrong 1b',
+              selected: false
+            }]
         },
         {
           level: 1,
           question: 'question 2',
-          correct: 'correct 2',
-          wrong: ['wrong 2a', 'wrong 2b'],
+          options: [{
+            text: 'correct 2',
+            correct: true,
+            selected: false
+          }, {
+            text: 'wrong 2a',
+            selected: false
+          },
+            {
+              text: 'wrong 2b',
+              selected: false
+            }]
         },
       ],
     },

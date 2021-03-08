@@ -5,9 +5,15 @@ export const webdevelopment: Topic = {
   questions: [
     {
       level: 1,
-      question: 'The http status code 401 is...',
-      correct: 'Unauthorized',
-      wrong: ['Forbidden', 'Denied'],
-    },
-  ],
+      question: "placeholder question",
+      options: [
+        {
+          text: 'answer 1',
+          correct: true
+        },
+        { text: 'answer 2' },
+        { text: 'answer 3' },
+      ]
+    }
+  ]
 }

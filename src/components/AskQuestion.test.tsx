@@ -1,44 +1,51 @@
 import { render, screen } from '@testing-library/react'
 import { AskQuestion } from './AskQuestion'
-import { Question } from './Categories'
 import userEvent from '@testing-library/user-event'
+import { Question } from './Categories'
 
-const correctAnswerSelected = jest.fn()
+const selectOption = jest.fn()
 const question = someQuestion()
 
 beforeEach(() => {
   render(
     <AskQuestion
       question={question}
-      correctAnswerSelected={correctAnswerSelected}
+      selectOption={selectOption}
+      showResult={false}
     />
   )
 })
 
 test('show the first question and answers', () => {
   expect(screen.getByText(question.question)).toBeVisible()
-  expect(screen.getByText(question.correct)).toBeVisible()
-  expect(screen.getByText(question.wrong[0])).toBeVisible()
-  expect(screen.getByText(question.wrong[1])).toBeVisible()
+  expect(screen.getByText(question.options[0].text)).toBeVisible()
+  expect(screen.getByText(question.options[1].text)).toBeVisible()
+  expect(screen.getByText(question.options[2].text)).toBeVisible()
 })
 
-it('should call correctAnswerSelected when the correct answer is clicked', () => {
-  userEvent.click(screen.getByText(question.correct))
+test('should call selectOption on click', () => {
+  userEvent.click(screen.getByText(question.options[0].text))
 
-  expect(correctAnswerSelected).toHaveBeenCalled()
-})
-
-it('should not call correctAnswerSelected when the wrong answer is clicked', () => {
-  userEvent.click(screen.getByText(question.wrong[0]))
-
-  expect(correctAnswerSelected).not.toHaveBeenCalled()
+  expect(selectOption).toHaveBeenCalled()
 })
 
 function someQuestion(): Question {
   return {
     level: 1,
     question: 'first question',
-    correct: 'first correct answer',
-    wrong: ['first wrong answer 1', 'first wrong answer 2'],
+    options: [{
+      text: 'correct 1',
+      correct: true,
+      selected: false
+    }, {
+      text: 'wrong 1a',
+      correct: false,
+      selected: false
+    },
+      {
+        text: 'wrong 1b',
+        correct: false,
+        selected: false
+      }]
   }
 }

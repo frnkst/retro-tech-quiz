@@ -5,15 +5,15 @@ export const kotlin: Topic = {
   questions: [
     {
       level: 1,
-      question: 'Add kotlin question here',
-      correct: 'Answer 1',
-      wrong: ['Answer 2', 'Answer 3'],
-    },
-    {
-      level: 1,
-      question: 'Add next kotlin question here',
-      correct: 'Answer 1',
-      wrong: ['Answer 2', 'Answer 3'],
-    },
-  ],
+      question: "placeholder question",
+      options: [
+        {
+          text: 'answer 1',
+          correct: true
+        },
+        { text: 'answer 2' },
+        { text: 'answer 3' },
+      ]
+    }
+  ]
 }
