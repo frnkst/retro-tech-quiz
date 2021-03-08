@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,4 +9,18 @@
 .retro-font {
   font-family: 'Press Start 2P', cursive;
   font-weight: 400;
+}
+
+.handwrite-font {
+  font-family: 'Handlee', cursive;
+  font-weight: 400;
+}
+
+.other-font {
+  font-family: 'Advent Pro', cursive;
+  font-weight: 400;
+}
+
+.selected {
+  box-shadow: 0 0 30px 5px #0ff;
 }

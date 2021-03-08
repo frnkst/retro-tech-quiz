@@ -1,40 +1,34 @@
-import { Question } from './Categories'
+import { Option, Question } from './Categories'
 import React from 'react'
 
 type QuestionProps = {
   question: Question
-  correctAnswerSelected: any
+  selectOption: (option: Option) => void
+  showResult: boolean
 }
 
-type Option = {
-  text: string
-  correct: boolean
-}
-
-const isEqual = (prevProps: QuestionProps, nextProps: QuestionProps) =>
-  prevProps.question === nextProps.question
-
-export const AskQuestion = React.memo(function ({
+export const AskQuestion = function ({
   question,
-  correctAnswerSelected,
+  selectOption,
+  showResult
 }: QuestionProps) {
-  const options: Option[] = shuffle([
-    { text: question.correct, correct: true },
-    ...question.wrong.map((wrong) => ({ text: wrong, correct: false })),
-  ])
 
   return (
     <>
-      <div className="md:text-4xl sm:text-3xl text-white m-10 retro-font">
-        <div className="text-center m-5 p-5 text-blue-300">
+      <div className="md:text-4xl sm:text-3xl m-10 other-font flex flex-col">
+        <div className="text-center m-5 p-5 text-gray-500 self-center">
           {question.question}
         </div>
 
-        {options.map((option) => (
+        {question.options?.map((option) => (
           <div
             key={option.text}
-            className="border-2 p-5 m-5 text-center cursor-pointer"
-            onClick={() => option.correct && correctAnswerSelected()}
+            className={`border-2 p-5 m-5 text-gray-500 text-center cursor-pointer w-3/6 self-center shadow-lg
+              ${showResult && option.correct ? 'bg-green-300': ''}
+              ${showResult && option.selected ? 'shadow-inner text-blue-500': ''}
+              ${showResult && !option.correct ? 'bg-red-300': ''}
+             `}
+            onClick={() => !showResult && selectOption(option)}
           >
             {option.text}
           </div>
@@ -42,26 +36,4 @@ export const AskQuestion = React.memo(function ({
       </div>
     </>
   )
-},
-isEqual)
-
-// https://github.com/Daplie/knuth-shuffle
-function shuffle(array: any[]) {
-  let currentIndex = array.length,
-    temporaryValue,
-    randomIndex
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex)
-    currentIndex -= 1
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex]
-    array[currentIndex] = array[randomIndex]
-    array[randomIndex] = temporaryValue
-  }
-
-  return array
 }

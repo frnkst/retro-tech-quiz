@@ -23,5 +23,5 @@ test('render the input box', () => {
 test('show let me in', () => {
   render(<App />)
 
-  expect(screen.getByText('Start')).toBeVisible()
+  expect(screen.getByText('-->')).toBeVisible()
 })

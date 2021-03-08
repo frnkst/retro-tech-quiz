@@ -5,9 +5,15 @@ export const java: Topic = {
   questions: [
     {
       level: 1,
-      question: 'Add question here',
-      correct: 'Answer 1',
-      wrong: ['Answer 2', 'Answer 3'],
-    },
-  ],
+      question: "placeholder question",
+      options: [
+        {
+          text: 'answer 1',
+          correct: true
+        },
+        { text: 'answer 2' },
+        { text: 'answer 3' },
+      ]
+    }
+  ]
 }

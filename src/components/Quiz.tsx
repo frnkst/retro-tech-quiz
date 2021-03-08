@@ -1,8 +1,8 @@
 import { Timer } from './Timer'
 import { Score } from './Score'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { AskQuestion } from './AskQuestion'
-import { Question, Topic } from './Categories'
+import { Option, Question, Topic } from './Categories'
 import { Result } from './Result'
 import { useLocation } from 'react-router-dom'
 
@@ -16,57 +16,75 @@ export function Quiz() {
   const topics = location.state.topics
   const time = location.state.time
 
-  const [position, setPosition] = useState({
+  const [quizState, setQuizState] = useState({
     topicNumber: 0,
     questionNumber: 0,
     score: 0,
+    showResult: false
   })
 
   function getQuestion(): Question {
-    const { topicNumber, questionNumber } = position
+    const { topicNumber, questionNumber } = quizState
     const topic = topics[topicNumber]
 
     if (questionNumber >= topic.questions.length) {
-      setPosition({
-        ...position,
+      setQuizState({
+        ...quizState,
         topicNumber: topicNumber + 1,
         questionNumber: 0,
+        showResult: false
       })
     }
 
     return topic.questions[questionNumber]
   }
 
-  function addToScore() {
-    setPosition({ ...position, score: position.score + 100 })
+  let question = getQuestion()
+
+  function selectOption(option: Option) {
+    option.selected = true
+
+    if (option.correct) {
+      const score = quizState.score + (question.level * 100)
+      setQuizState({ ...quizState, score: score, showResult: true })
+    } else {
+      const score = quizState.score - 100
+      setQuizState({ ...quizState, score: score, showResult: true })
+    }
   }
 
-  if (position.topicNumber === topics.length) {
+  if (quizState.topicNumber === topics.length) {
     return <Result />
   }
+
+  const showNextQuestion = () => {
+    setQuizState({
+      ...quizState,
+      topicNumber: quizState.topicNumber,
+      questionNumber: quizState.questionNumber + 1,
+      showResult: false
+    })
+  }
+
+  document.onkeydown = (event) => event.key === 'ArrowRight' && showNextQuestion()
 
   return (
     <>
       <div className="flex justify-between">
         <Timer time={time} />
-        <Score score={position.score.toString()} />
+        <Score score={quizState.score.toString()} />
       </div>
       <div className="flex-row">
         <AskQuestion
-          question={getQuestion()}
-          correctAnswerSelected={addToScore}
+          question={question}
+          selectOption={selectOption}
+          showResult={quizState.showResult}
         />
         <div
-          className="md:text-4xl sm:text-2xl text-yellow-300 w-screen retro-font text-center cursor-pointer"
-          onClick={() =>
-            setPosition({
-              ...position,
-              topicNumber: position.topicNumber,
-              questionNumber: position.questionNumber + 1,
-            })
-          }
+          className="md:text-4xl sm:text-2xl text-gray-500 w-screen retro-font text-center cursor-pointer"
+          onClick={ showNextQuestion }
         >
-          Next
+          --&gt;
         </div>
       </div>
     </>
