@@ -7,7 +7,7 @@ test('show the time selection', () => {
 })
 
 test('show the topics', () => {
-render(<Start />)
+  render(<Start />)
   expect(screen.getByText('Topics')).toBeVisible()
 })
 
@@ -23,4 +23,3 @@ test('clear the placeholder text on focus', () => {
   input.focus()
   expect(screen.queryByPlaceholderText('Player Name')).toBeNull()
 })
-

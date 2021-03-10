@@ -2,7 +2,7 @@ import { Categories, getAllTopics, Option, Topic } from './Categories'
 import { useHistory } from 'react-router-dom'
 import React, { useState } from 'react'
 import { Score } from './Score'
-import { History } from 'history';
+import { History } from 'history'
 
 export function Start() {
   const [time, setTime] = useState<string>('00:00')
@@ -35,9 +35,7 @@ export function Start() {
 
         {getTimeSelection(time, setTime)}
 
-        <div className="retro-font text-gray-500 md:text-3xl py-10">
-          Topics
-        </div>
+        <div className="retro-font text-gray-500 md:text-3xl py-10">Topics</div>
         <Categories
           selectTopics={(topic: string[]) => setSelectedTopics([...topic])}
           selectedTopics={selectedTopics}
@@ -45,7 +43,10 @@ export function Start() {
         />
       </div>
       <div className="retro-font text-gray-500 py-10 md:text-3xl sm:text-2xl w-screen flex cursor-pointer">
-        <div className="text-center w-screen" onClick={() => startGame(history,selectedTopics, time)}>
+        <div
+          className="text-center w-screen"
+          onClick={() => startGame(history, selectedTopics, time)}
+        >
           --&gt;
         </div>
       </div>
@@ -59,22 +60,22 @@ function getTimeSelection(time: string, setTime: (time: string) => void) {
   return (
     <>
       <div className="retro-font text-gray-500 md:text-3xl py-10">Time</div>
-        <div className="retro-font md:text-2xl sm:text-1xl flex flex-wrap w-screen justify-center">
-          {timeOptions.map((option) => {
-            return (
-              <div
-                key={option}
-                className={`${
-                  option === time
-                    ? 'shadow-inner text-blue-500'
-                    : 'shadow-lg text-gray-500'
-                } border-2 text-gray-500 p-5 m-5 text-center cursor-pointer w-2/6 self-center shadow-lg`}
-                onClick={() => setTime(option)}
-              >
-                {option}
-              </div>
-            )
-          })}
+      <div className="retro-font md:text-2xl sm:text-1xl flex flex-wrap w-screen justify-center">
+        {timeOptions.map((option) => {
+          return (
+            <div
+              key={option}
+              className={`${
+                option === time
+                  ? 'shadow-inner text-blue-500'
+                  : 'shadow-lg text-gray-500'
+              } border-2 text-gray-500 p-5 m-5 text-center cursor-pointer w-2/6 self-center shadow-lg`}
+              onClick={() => setTime(option)}
+            >
+              {option}
+            </div>
+          )
+        })}
       </div>
     </>
   )
@@ -89,7 +90,7 @@ function startGame(history: History, selectedTopics: string[], time: string) {
 
 function prepareTopics(selectedTopics: string[]) {
   const filteredTopics = getAllTopics().filter((topic) =>
-    selectedTopics.includes(topic.name),
+    selectedTopics.includes(topic.name)
   )
 
   shuffleOptions(filteredTopics)
@@ -97,11 +98,12 @@ function prepareTopics(selectedTopics: string[]) {
 }
 
 function shuffleOptions(filteredTopics: Topic[]) {
-  filteredTopics.forEach((topic) => topic.questions.forEach((question) => {
-     shuffle(question.options)
-  }))
+  filteredTopics.forEach((topic) =>
+    topic.questions.forEach((question) => {
+      shuffle(question.options)
+    })
+  )
 }
-
 
 // https://github.com/Daplie/knuth-shuffle
 function shuffle(array: Option[]) {
@@ -123,4 +125,3 @@ function shuffle(array: Option[]) {
 
   return array
 }
-

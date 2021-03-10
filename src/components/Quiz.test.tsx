@@ -54,34 +54,40 @@ function someTopic(): Topic[] {
         {
           level: 1,
           question: 'question 1',
-          options: [{
-            text: 'correct 1',
-            correct: true,
-            selected: false
-          }, {
-            text: 'wrong 1a',
-            selected: false
-          },
+          options: [
+            {
+              text: 'correct 1',
+              correct: true,
+              selected: false,
+            },
+            {
+              text: 'wrong 1a',
+              selected: false,
+            },
             {
               text: 'wrong 1b',
-              selected: false
-            }]
+              selected: false,
+            },
+          ],
         },
         {
           level: 1,
           question: 'question 2',
-          options: [{
-            text: 'correct 2',
-            correct: true,
-            selected: false
-          }, {
-            text: 'wrong 2a',
-            selected: false
-          },
+          options: [
+            {
+              text: 'correct 2',
+              correct: true,
+              selected: false,
+            },
+            {
+              text: 'wrong 2a',
+              selected: false,
+            },
             {
               text: 'wrong 2b',
-              selected: false
-            }]
+              selected: false,
+            },
+          ],
         },
       ],
     },

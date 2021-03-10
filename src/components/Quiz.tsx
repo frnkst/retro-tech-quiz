@@ -20,7 +20,7 @@ export function Quiz() {
     topicNumber: 0,
     questionNumber: 0,
     score: 0,
-    showResult: false
+    showResult: false,
   })
 
   function getQuestion(): Question {
@@ -32,7 +32,7 @@ export function Quiz() {
         ...quizState,
         topicNumber: topicNumber + 1,
         questionNumber: 0,
-        showResult: false
+        showResult: false,
       })
     }
 
@@ -45,7 +45,7 @@ export function Quiz() {
     option.selected = true
 
     if (option.correct) {
-      const score = quizState.score + (question.level * 100)
+      const score = quizState.score + question.level * 100
       setQuizState({ ...quizState, score: score, showResult: true })
     } else {
       const score = quizState.score - 100
@@ -62,11 +62,12 @@ export function Quiz() {
       ...quizState,
       topicNumber: quizState.topicNumber,
       questionNumber: quizState.questionNumber + 1,
-      showResult: false
+      showResult: false,
     })
   }
 
-  document.onkeydown = (event) => event.key === 'ArrowRight' && showNextQuestion()
+  document.onkeydown = (event) =>
+    event.key === 'ArrowRight' && showNextQuestion()
 
   return (
     <>
@@ -82,7 +83,7 @@ export function Quiz() {
         />
         <div
           className="md:text-4xl sm:text-2xl text-gray-500 w-screen retro-font text-center cursor-pointer"
-          onClick={ showNextQuestion }
+          onClick={showNextQuestion}
         >
           --&gt;
         </div>

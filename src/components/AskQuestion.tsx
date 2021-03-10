@@ -10,9 +10,8 @@ type QuestionProps = {
 export const AskQuestion = function ({
   question,
   selectOption,
-  showResult
+  showResult,
 }: QuestionProps) {
-
   return (
     <>
       <div className="md:text-4xl sm:text-3xl m-10 other-font flex flex-col">
@@ -24,9 +23,13 @@ export const AskQuestion = function ({
           <div
             key={option.text}
             className={`border-2 p-5 m-5 text-gray-500 text-center cursor-pointer w-3/6 self-center shadow-lg
-              ${showResult && option.correct ? 'bg-green-300': ''}
-              ${showResult && option.selected ? 'shadow-inner text-blue-500': ''}
-              ${showResult && !option.correct ? 'bg-red-300': ''}
+              ${showResult && option.correct ? 'bg-green-300' : ''}
+              ${
+                showResult && option.selected
+                  ? 'shadow-inner text-blue-500'
+                  : ''
+              }
+              ${showResult && !option.correct ? 'bg-red-300' : ''}
              `}
             onClick={() => !showResult && selectOption(option)}
           >

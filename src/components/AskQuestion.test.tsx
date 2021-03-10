@@ -33,19 +33,22 @@ function someQuestion(): Question {
   return {
     level: 1,
     question: 'first question',
-    options: [{
-      text: 'correct 1',
-      correct: true,
-      selected: false
-    }, {
-      text: 'wrong 1a',
-      correct: false,
-      selected: false
-    },
+    options: [
+      {
+        text: 'correct 1',
+        correct: true,
+        selected: false,
+      },
+      {
+        text: 'wrong 1a',
+        correct: false,
+        selected: false,
+      },
       {
         text: 'wrong 1b',
         correct: false,
-        selected: false
-      }]
+        selected: false,
+      },
+    ],
   }
 }
