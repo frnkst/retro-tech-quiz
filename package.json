@@ -28,7 +28,8 @@
     "test": "craco test",
     "test:coverage": "craco test --coverage  --watchAll=false",
     "test:badges": "yarn test:coverage && make-coverage-badge",
-    "cypress": "rm -rf cypress/screenshots/screenshot.spec.ts && cypress run",
+    "cypress": "cypress run --config ignoreTestFiles=\"**/screenshots.spec.ts\"",
+    "cypress:screenshots": "rm -rf cypress/screenshots/screenshots.spec.ts && cypress run --spec \"cypress/integration/screenshots.spec.ts\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

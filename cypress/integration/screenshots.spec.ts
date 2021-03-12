@@ -1,7 +1,7 @@
 //@ts-nocheck
 export {}
-describe('Screenshot for readme', () => {
-  it('take a screenshot', () => {
+describe('Make screenshots for README.md', () => {
+  it('should take a screenshots', () => {
     cy.viewport('macbook-15')
     cy.visit('http://localhost:3000')
 
@@ -17,8 +17,7 @@ describe('Screenshot for readme', () => {
     cy.contains('05:00').click()
     cy.contains('Git').click()
     cy.contains('-->').click()
-    cy.contains('-->').click()
-
+    cy.conta
     cy.screenshot('result_page')
   })
 })
