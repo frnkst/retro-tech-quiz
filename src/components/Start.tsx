@@ -22,6 +22,7 @@ export function Start() {
       </div>
       <div className="App flex-col flex align-middle w-screen justify-center md:text-2xl">
         <input
+          name="player"
           placeholder="Player Name"
           type="text"
           onFocus={(event) => (event.target.placeholder = '')}
