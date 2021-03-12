@@ -17,7 +17,7 @@ type ResultsProps = {
 export function Results({ results }: ResultsProps) {
   return (
     <div className="flex flex-col  w-screen">
-      <span className="retro-font md:text-3xl self-center">You suck!!</span>
+      <span className="retro-font md:text-3xl self-center">You suck!</span>
 
       <div className="bg-gray-800 graph-container self-center">
         <ResponsiveContainer width="100%" height="100%">
