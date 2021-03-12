@@ -1,4 +1,4 @@
-name: dev branches
+name: Development branches
 
 on:
   push:
@@ -12,16 +12,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: install
+      - name: Install dependencies
         run: yarn
 
-      - name: build
+      - name: Build application
         run: yarn build
 
-      - name: test
+      - name: Run unit tests
         run: yarn test:coverage
 
-      - name: cypress
+      - name: Run end-to-end tests
         uses: cypress-io/github-action@v2
         with:
           build: yarn build

@@ -1,4 +1,4 @@
-name: main branch
+name: Main branch
 
 on:
   push:
@@ -12,19 +12,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: install
+      - name: Install dependencies
         run: yarn
 
-      - name: format
+      - name: Format all files with prettier
         run: yarn prettier --write .
 
-      - name: build
+      - name: Build application
         run: yarn build
 
-      - name: test
+      - name: Run unit tests
         run: yarn test:badges
 
-      - name: cypress
+      - name: Run end-to-end tests
         uses: cypress-io/github-action@v2
         with:
           build: yarn build
