@@ -26,6 +26,5 @@ yarn-error.log*
 /.idea/
 
 /cypress/videos
-/cypress/screenshots
 /cypress/screenshots/screenshot.spec.ts
 !/cypress/screenshots/screenshot.spec.ts/*.png

@@ -32,4 +32,4 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update coverage badges and format with prettier (auto commit)
+          commit_message: Auto commit coverage, screenshots and prettier
