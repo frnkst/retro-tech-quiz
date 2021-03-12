@@ -18,17 +18,16 @@ jobs:
       - name: Build application
         run: yarn build
 
-      - name: Run unit tests
+      - name: Run unit tests (and update badges)
         run: yarn test:badges
 
-      - name: Run end-to-end test
-        run: yarn cypress
+      - name: Run end-to-end tests (and update screenshots)
+        uses: cypress-io/github-action@v2
+        with:
+          start: yarn start
 
       - name: Format all files with prettier
         run: yarn prettier --write .
-
-      - name: Update screenshots for readme
-        run: yarn cypress:screenshots
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:

@@ -21,5 +21,7 @@ jobs:
       - name: Run unit tests
         run: yarn test:coverage
 
-      - name: Run end-to-end test
-        run: yarn cypress
+      - name: Run end-to-end tests
+        uses: cypress-io/github-action@v2
+        with:
+          start: yarn start
