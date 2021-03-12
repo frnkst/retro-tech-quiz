@@ -4,6 +4,6 @@ See it live: https://retro-tech-quiz.vercel.app/
 
 ## Screenshots
 
-![Screenshot of start screen](cypress/screenshots/screenshot.spec.ts/main_page.png?raw=true "Start screen")
-![Screenshot of quiz screen](cypress/screenshots/screenshot.spec.ts/quiz_page.png?raw=true "Quiz screen")
-![Screenshot of result screen](cypress/screenshots/screenshot.spec.ts/result_page.png?raw=true "Result screen")
+![Screenshot of start screen](cypress/screenshots/screenshot.spec.ts/main_page.png?raw=true 'Start screen')
+![Screenshot of quiz screen](cypress/screenshots/screenshot.spec.ts/quiz_page.png?raw=true 'Quiz screen')
+![Screenshot of result screen](cypress/screenshots/screenshot.spec.ts/result_page.png?raw=true 'Result screen')
