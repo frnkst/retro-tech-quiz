@@ -12,9 +12,9 @@ type LocationState = {
 }
 
 export type Result = {
-  name: string,
-  level: number,
-  correct: number,
+  name: string
+  level: number
+  correct: number
   wrong: number
 }
 
@@ -52,7 +52,7 @@ export function Quiz() {
     option.selected = true
 
     if (option.correct) {
-      const score = quizState.score + (question.level * 100)
+      const score = quizState.score + question.level * 100
       updateResult(results, question, 'correct')
       setResults([...results])
       setQuizState({ ...quizState, score: score, showResult: true })
@@ -73,10 +73,11 @@ export function Quiz() {
     })
   }
 
-  document.onkeydown = (event) => event.key === 'ArrowRight' && showNextQuestion()
+  document.onkeydown = (event) =>
+    event.key === 'ArrowRight' && showNextQuestion()
 
   if (quizState.topicNumber === topics.length) {
-    return <Results results={results}/>
+    return <Results results={results} />
   }
 
   let question = getQuestion()
@@ -105,21 +106,33 @@ export function Quiz() {
 }
 
 // Sorry this function is horrible ;(. Please refactor
-function updateResult(results: Result[], question: Question, type: 'correct' | 'wrong') {
-  const levelResult = results.find(res => res.level === question.level)
+function updateResult(
+  results: Result[],
+  question: Question,
+  type: 'correct' | 'wrong'
+) {
+  const levelResult = results.find((res) => res.level === question.level)
   if (type === 'correct') {
     if (levelResult) {
       levelResult.correct += 1
     } else {
-      results.push({ name: `Level ${question.level}`, level: question.level, correct: 1, wrong: 0 })
+      results.push({
+        name: `Level ${question.level}`,
+        level: question.level,
+        correct: 1,
+        wrong: 0,
+      })
     }
   } else {
     if (levelResult) {
       levelResult.wrong += 1
-    }
-    else {
-      results.push({ name: `Level ${question.level}`, level: question.level, correct: 0, wrong: 1 })
+    } else {
+      results.push({
+        name: `Level ${question.level}`,
+        level: question.level,
+        correct: 0,
+        wrong: 1,
+      })
     }
   }
 }
-

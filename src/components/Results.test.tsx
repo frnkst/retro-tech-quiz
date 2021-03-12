@@ -8,7 +8,7 @@ class ResizeObserver {
 }
 
 beforeAll(() => {
-  window.ResizeObserver = ResizeObserver;
+  window.ResizeObserver = ResizeObserver
 })
 
 test('result summary is shown', () => {
@@ -16,5 +16,4 @@ test('result summary is shown', () => {
   expect(screen.getByText('You suck!')).toBeVisible()
 })
 
-const someResults = () => [{ name: 'Level 1', level: 1, correct: 5, wrong: 4}]
-
+const someResults = () => [{ name: 'Level 1', level: 1, correct: 5, wrong: 4 }]

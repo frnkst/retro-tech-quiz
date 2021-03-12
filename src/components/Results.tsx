@@ -1,4 +1,13 @@
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts'
 import { Result } from './Quiz'
 
 type ResultsProps = {
@@ -6,7 +15,6 @@ type ResultsProps = {
 }
 
 export function Results({ results }: ResultsProps) {
-
   return (
     <div className="flex flex-col  w-screen">
       <span className="retro-font md:text-3xl self-center">You suck!</span>
@@ -34,7 +42,6 @@ export function Results({ results }: ResultsProps) {
           </BarChart>
         </ResponsiveContainer>
       </div>
-
     </div>
   )
 }
