@@ -17,7 +17,7 @@ describe('Make screenshots for README.md', () => {
     cy.contains('05:00').click()
     cy.contains('Git').click()
     cy.contains('-->').click()
-    cy.conta
+    cy.contains('-->').click()
     cy.screenshot('result_page')
   })
 })
