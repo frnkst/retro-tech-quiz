@@ -21,6 +21,5 @@ describe('E2E flow', () => {
 
     // Result screen
     cy.contains('You suck!').should('be.visible')
-
   })
 })
