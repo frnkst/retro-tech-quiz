@@ -1,12 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { Results } from './Results'
 
-class ResizeObserver {
-  observe() {}
-  unobserve() {}
-  disconnect() {}
-}
-
 beforeAll(() => {
   window.ResizeObserver = ResizeObserver
 })
