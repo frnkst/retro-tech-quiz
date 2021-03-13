@@ -65,7 +65,6 @@ test('Add to the score when clicking on the correct answer', () => {
 
   userEvent.click(screen.getByText('correct 2'))
   expect(screen.getByText('200')).toBeVisible()
-
 })
 
 test('Subtract from the score when clicking on the wrong answer', () => {
