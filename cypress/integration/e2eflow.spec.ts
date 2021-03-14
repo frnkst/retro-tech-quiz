@@ -1,4 +1,3 @@
-//@ts-nocheck
 export {}
 
 describe('E2E flow', () => {
