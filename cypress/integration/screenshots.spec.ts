@@ -1,4 +1,3 @@
-//@ts-nocheck
 export {}
 describe('Make screenshots for README.md', () => {
   it('should take a screenshots', () => {

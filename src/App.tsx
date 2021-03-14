@@ -13,6 +13,7 @@ export default function App() {
             <Quiz />
           </Route>
           <Route exact path="/">
+
             <Start />
           </Route>
         </Switch>
