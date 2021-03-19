@@ -1,58 +1,61 @@
+import React, { useState } from 'react'
 import { Categories, getAllTopics } from './Categories'
 import { useHistory } from 'react-router-dom'
-import React, { useState } from 'react'
 import { Score } from './Score'
 import { History } from 'history'
 import { prepareTopics } from '../services/question-service'
 
 export function Start() {
   const [time, setTime] = useState<string>('00:00')
-
+  const [name, setName] = useState<string>('')
   const [selectedTopics, setSelectedTopics] = useState<string[]>([])
   const history = useHistory<History>()
 
   const allTopics = getAllTopics().map((topic) => topic.name)
 
   return (
-    <>
+    <div className="mx-auto w-96 sm:w-screen font-retro">
       <div className="flex justify-between">
-        <div className="retro-font md:text-6xl sm:text-3xl text-gray-500 m-10">
+        <div className="m-10 text-gray-500 lg:text-4xl md:text-3xl sm:text-2xl">
           {time}
         </div>
         <Score score={'000000'} />
       </div>
-      <div className="App flex-col flex align-middle w-screen justify-center md:text-2xl">
+      <div className="flex flex-col justify-center align-middle md:text-2xl">
+        <div className="py-10 text-center text-gray-500 sm:text-2xl md:text-3xl">
+          Player name
+        </div>
         <input
           name="player"
-          placeholder="Player Name"
           type="text"
-          onFocus={(event) => (event.target.placeholder = '')}
-          onChange={(event) =>
-            event.target.placeholder?.length === 0
-              ? (event.target.placeholder = 'Player Name')
-              : void 0
+          autoFocus
+          value={name}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setName(e.target.value)
           }
-          className="retro-font border-2 p-5 m-5 text-center cursor-pointer w-3/6 self-center shadow-lg"
+          className="self-center w-3/6 p-5 m-5 text-center border-2 shadow-lg cursor-pointer "
         />
 
         {getTimeSelection(time, setTime)}
 
-        <div className="retro-font text-gray-500 md:text-3xl py-10">Topics</div>
+        <div className="py-10 text-center text-gray-500 sm:text-2xl md:text-3xl">
+          Topics
+        </div>
         <Categories
           selectTopics={(topic: string[]) => setSelectedTopics([...topic])}
           selectedTopics={selectedTopics}
           allTopics={allTopics}
         />
       </div>
-      <div className="retro-font text-gray-500 py-10 md:text-3xl sm:text-2xl w-screen flex cursor-pointer">
+      <div className="py-10 text-gray-500 cursor-pointer md:text-3xl sm:text-2xl">
         <div
-          className="text-center w-screen"
+          className="text-center"
           onClick={() => startGame(history, selectedTopics, time)}
         >
-          --&gt;
+          <button className="p-3">--&gt;</button>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
@@ -61,11 +64,13 @@ function getTimeSelection(time: string, setTime: (time: string) => void) {
 
   return (
     <>
-      <div className="retro-font text-gray-500 md:text-3xl py-10">Time</div>
-      <div className="retro-font md:text-2xl sm:text-1xl flex flex-wrap w-screen justify-center">
+      <div className="py-10 text-center text-gray-500 sm:text-2xl md:text-3xl">
+        Time
+      </div>
+      <div className="flex flex-wrap justify-center md:text-2xl sm:text-1xl">
         {timeOptions.map((option) => {
           return (
-            <div
+            <button
               key={option}
               className={`${
                 option === time
@@ -75,7 +80,7 @@ function getTimeSelection(time: string, setTime: (time: string) => void) {
               onClick={() => setTime(option)}
             >
               {option}
-            </div>
+            </button>
           )
         })}
       </div>

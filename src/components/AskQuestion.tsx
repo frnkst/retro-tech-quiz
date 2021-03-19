@@ -14,8 +14,8 @@ export const AskQuestion = function ({
 }: QuestionProps) {
   return (
     <>
-      <div className="md:text-4xl sm:text-3xl m-10 other-font flex flex-col">
-        <div className="text-center m-5 p-5 text-gray-500 self-center">
+      <div className="flex flex-col m-10 md:text-4xl sm:text-3xl font-other">
+        <div className="self-center p-5 m-5 text-center text-gray-500">
           {question.question}
         </div>
 

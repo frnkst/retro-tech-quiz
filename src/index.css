@@ -6,21 +6,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.retro-font {
-  font-family: 'Press Start 2P', cursive;
-  font-weight: 400;
-}
-
-.handwrite-font {
-  font-family: 'Handlee', cursive;
-  font-weight: 400;
-}
-
-.other-font {
-  font-family: 'Advent Pro', cursive;
-  font-weight: 400;
-}
-
 .selected {
   box-shadow: 0 0 30px 5px #0ff;
 }

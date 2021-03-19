@@ -1,7 +1,7 @@
 import { Topic } from '../components/Categories'
 
 export const javascript: Topic = {
-  name: 'JavaScript',
+  name: 'JS',
   questions: [
     {
       level: 1,
