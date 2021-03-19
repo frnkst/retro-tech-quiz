@@ -67,7 +67,7 @@
     "cypress": "^6.7.1",
     "enzyme": "^3.11.0",
     "make-coverage-badge": "^1.2.0",
-    "postcss": "^7",
+    "postcss": "^8",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "wait-on": "^5.2.1"
   }
