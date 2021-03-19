@@ -54,7 +54,7 @@ test('show the results when there are no more questions', () => {
   userEvent.type(document.body, '{arrowright}')
   userEvent.type(document.body, '{arrowright}')
 
-  expect(screen.getByText('You suck!')).toBeVisible()
+  expect(screen.getByText('You rock!')).toBeVisible()
 })
 
 test('Add to the score when clicking on the correct answer', () => {

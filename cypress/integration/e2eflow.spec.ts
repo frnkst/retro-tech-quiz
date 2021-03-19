@@ -19,6 +19,6 @@ describe('E2E flow', () => {
     cy.contains('-->').click()
 
     // Result screen
-    cy.contains('You suck!').should('be.visible')
+    cy.contains('You rock!').should('be.visible')
   })
 })

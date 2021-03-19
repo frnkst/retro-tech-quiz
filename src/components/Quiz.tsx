@@ -84,7 +84,7 @@ export function Quiz() {
 
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between font-retro">
         <Timer time={time} />
         <Score score={quizState.score.toString()} />
       </div>
@@ -95,7 +95,7 @@ export function Quiz() {
           showResult={quizState.showResult}
         />
         <div
-          className="md:text-4xl sm:text-2xl text-gray-500 w-screen retro-font text-center cursor-pointer"
+          className="md:text-4xl sm:text-2xl text-gray-500 w-screen font-retro text-center cursor-pointer"
           onClick={showNextQuestion}
         >
           --&gt;

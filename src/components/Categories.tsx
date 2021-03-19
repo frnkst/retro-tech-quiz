@@ -29,7 +29,7 @@ export function Categories({
                 selectedTopics.includes(topic)
                   ? 'shadow-inner text-blue-500'
                   : 'shadow-lg text-gray-500'
-              } retro-font border-2 p-5 m-5 cursor-pointer w-2/6 text-center flex flex-col justify-center`}
+              } border-2 p-5 m-5 cursor-pointer w-2/6 text-center flex flex-col justify-center`}
               onClick={() => {
                 if (selectedTopics.includes(topic)) {
                   selectTopics(selectedTopics.filter((e) => e !== topic))
