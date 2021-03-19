@@ -7,16 +7,16 @@ See it live: https://retro-tech-quiz.vercel.app
 Clone the repository
 
 Install dependencies
+
 ```sh
 yarn
 ```
 
 Start the application
+
 ```sh
 yarn start
 ```
-
-
 
 ## Screenshots
 
