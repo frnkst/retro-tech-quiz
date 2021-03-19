@@ -1,7 +1,7 @@
 import { Topic } from '../components/Categories'
 
 export const typescript: Topic = {
-  name: 'TypeScript',
+  name: 'TS',
   questions: [
     {
       level: 1,

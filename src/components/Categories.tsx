@@ -18,18 +18,18 @@ export function Categories({
   allTopics,
 }: TopicsProps) {
   return (
-    <div className="w-5/6 self-center">
-      <div className="flex flex-wrap justify-center cursor-pointer md:text-2xl">
+    <div className="self-center w-5/6">
+      <div className="flex flex-wrap justify-center cursor-pointer">
         {allTopics.map((topic: string) => {
           return (
-            <div
+            <button
               key={topic}
               data-testid="category"
               className={`${
                 selectedTopics.includes(topic)
                   ? 'shadow-inner text-blue-500'
                   : 'shadow-lg text-gray-500'
-              } retro-font border-2 p-5 m-5 text-center cursor-pointer w-2/6 `}
+              } retro-font border-2 p-5 m-5 cursor-pointer w-2/6 text-center flex flex-col justify-center`}
               onClick={() => {
                 if (selectedTopics.includes(topic)) {
                   selectTopics(selectedTopics.filter((e) => e !== topic))
@@ -38,8 +38,8 @@ export function Categories({
                 }
               }}
             >
-              <span className="self-center">{topic}</span>
-            </div>
+              <span className="self-center text-sm md:text-2xl">{topic}</span>
+            </button>
           )
         })}
       </div>

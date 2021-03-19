@@ -1,7 +1,7 @@
 import { Topic } from '../components/Categories'
 
 export const webdevelopment: Topic = {
-  name: 'Web Development',
+  name: 'Web',
   questions: [
     {
       level: 1,
