@@ -1,9 +1,18 @@
 import { Start } from './Start'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import React from 'react'
 
 beforeEach(() => {
   render(<Start />)
+})
+
+test('show the timer', () => {
+  expect(screen.getByText('00:00')).toBeVisible()
+})
+
+test('show the high score', () => {
+  expect(screen.getByText('000000')).toBeVisible()
 })
 
 test('show the time selection', () => {
@@ -15,14 +24,7 @@ test('show the topics', () => {
 })
 
 test('show the player name input box', () => {
-  expect(screen.getByPlaceholderText('Player Name')).toBeVisible()
-})
-
-test('clear the placeholder text on focus', () => {
-  const input = screen.getByPlaceholderText('Player Name')
-  expect(input).toBeVisible()
-  input.focus()
-  expect(screen.queryByPlaceholderText('Player Name')).toBeNull()
+  expect(screen.getByRole('textbox')).toBeVisible()
 })
 
 test('select a time', () => {
@@ -50,4 +52,8 @@ test('select some topics', () => {
   const git = screen.getByText('Git')
   userEvent.click(git)
   expect(git.parentElement).toHaveClass('text-blue-500')
+})
+
+test('show let me in', () => {
+  expect(screen.getByText('-->')).toBeVisible()
 })
