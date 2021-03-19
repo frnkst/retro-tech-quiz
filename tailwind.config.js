@@ -6,8 +6,8 @@ module.exports = {
       fontFamily: {
         retro: "'Press Start 2P', cursive",
         handwrite: "'Handlee', cursive",
-        other: "'Advent Pro', cursive"
-      }
+        other: "'Advent Pro', cursive",
+      },
     },
   },
   variants: {

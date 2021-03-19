@@ -10,7 +10,7 @@ export function Results({ results }: ResultsProps) {
       <span className="font-retro md:text-3xl self-center">You rock!</span>
 
       <div className="self-center w-1/4">
-        Results: { JSON.stringify(results) }
+        Results: {JSON.stringify(results)}
       </div>
     </div>
   )
