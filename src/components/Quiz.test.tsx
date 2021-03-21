@@ -41,20 +41,11 @@ test('show the next question when clicking next', () => {
   expect(screen.getByText('wrong 2b')).toBeVisible()
 })
 
-test('show the next question when clicking the right arrow key', () => {
-  userEvent.type(document.body, '{arrowright}')
-
-  expect(screen.getByText('question 2')).toBeVisible()
-  expect(screen.getByText('correct 2')).toBeVisible()
-  expect(screen.getByText('wrong 2a')).toBeVisible()
-  expect(screen.getByText('wrong 2b')).toBeVisible()
-})
-
 test('show the results when there are no more questions', () => {
-  userEvent.type(document.body, '{arrowright}')
-  userEvent.type(document.body, '{arrowright}')
+  userEvent.click(screen.getByText('-->'))
+  userEvent.click(screen.getByText('-->'))
 
-  expect(screen.getByText('You rock!')).toBeVisible()
+  expect(screen.getByText('Well done!')).toBeVisible()
 })
 
 test('Add to the score when clicking on the correct answer', () => {

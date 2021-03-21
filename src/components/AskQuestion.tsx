@@ -20,7 +20,7 @@ export const AskQuestion = function ({
         </div>
 
         {question.options?.map((option) => (
-          <div
+          <button
             key={option.text}
             className={`border-2 p-5 m-5 text-gray-500 text-center cursor-pointer w-3/6 self-center shadow-lg
               ${showResult && option.correct ? 'bg-green-300' : ''}
@@ -34,7 +34,7 @@ export const AskQuestion = function ({
             onClick={() => !showResult && selectOption(option)}
           >
             {option.text}
-          </div>
+          </button>
         ))}
       </div>
     </>

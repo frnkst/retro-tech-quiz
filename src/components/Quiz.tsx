@@ -64,7 +64,11 @@ export function Quiz() {
     }
   }
 
-  const showNextQuestion = () => {
+  const showNextQuestion = (eventTarget: HTMLButtonElement) => {
+    if (eventTarget) {
+      eventTarget.blur()
+    }
+
     setQuizState({
       ...quizState,
       topicNumber: quizState.topicNumber,
@@ -72,9 +76,6 @@ export function Quiz() {
       showResult: false,
     })
   }
-
-  document.onkeydown = (event) =>
-    event.key === 'ArrowRight' && showNextQuestion()
 
   if (quizState.topicNumber === topics.length) {
     return <Results results={results} />
@@ -94,12 +95,12 @@ export function Quiz() {
           selectOption={selectOption}
           showResult={quizState.showResult}
         />
-        <div
+        <button
           className="md:text-4xl sm:text-2xl text-gray-500 w-screen font-retro text-center cursor-pointer"
-          onClick={showNextQuestion}
+          onClick={(event) => showNextQuestion(event.target as HTMLButtonElement)}
         >
           --&gt;
-        </div>
+        </button>
       </div>
     </>
   )
