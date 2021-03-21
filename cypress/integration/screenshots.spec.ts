@@ -15,7 +15,6 @@ describe('Make screenshots for README.md', () => {
     cy.screenshot('main_page')
   })
 
-
   it('quiz page', () => {
     cy.contains('05:00').click()
     cy.contains('Git').click()
@@ -29,7 +28,7 @@ describe('Make screenshots for README.md', () => {
     cy.contains('05:00').click()
     cy.contains('Git').click()
     cy.contains('-->').click()
-    for (let i=0; i<10; i++) {
+    for (let i = 0; i < 10; i++) {
       cy.get('button').first().click()
       cy.contains('-->').click()
     }

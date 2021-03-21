@@ -5,7 +5,8 @@ export const git: Topic = {
   questions: [
     {
       level: 1,
-      question: 'Which of these Git client commands creates a copy of the repository and a working directory in the\n' +
+      question:
+        'Which of these Git client commands creates a copy of the repository and a working directory in the\n' +
         'client’s workspace?',
       options: [
         {
@@ -19,7 +20,8 @@ export const git: Topic = {
     },
     {
       level: 1,
-      question: 'If you want to make radical changes to your team’s project and don’t want to impact the rest of the\n' +
+      question:
+        'If you want to make radical changes to your team’s project and don’t want to impact the rest of the\n' +
         'team, you should implement your changes in...?',
       options: [
         {
@@ -46,7 +48,8 @@ export const git: Topic = {
     },
     {
       level: 1,
-      question: 'Which command defines the author email to be used for all commits by the current user',
+      question:
+        'Which command defines the author email to be used for all commits by the current user',
       options: [
         {
           text: 'git config -global user.email',
@@ -59,7 +62,8 @@ export const git: Topic = {
     },
     {
       level: 2,
-      question: 'Which Git command changes where the HEAD pointer points and modifies the contents of the working directory?',
+      question:
+        'Which Git command changes where the HEAD pointer points and modifies the contents of the working directory?',
       options: [
         {
           text: 'pull',
@@ -72,7 +76,8 @@ export const git: Topic = {
     },
     {
       level: 2,
-      question: 'Which command removes untracked files from your working directory?',
+      question:
+        'Which command removes untracked files from your working directory?',
       options: [
         {
           text: 'git clean',
@@ -85,7 +90,8 @@ export const git: Topic = {
     },
     {
       level: 2,
-      question: 'Which command creates an empty git repository in the specified directory?',
+      question:
+        'Which command creates an empty git repository in the specified directory?',
       options: [
         {
           text: 'git init',
