@@ -97,7 +97,9 @@ export function Quiz() {
         />
         <button
           className="md:text-4xl sm:text-2xl text-gray-500 w-screen font-retro text-center cursor-pointer"
-          onClick={(event) => showNextQuestion(event.target as HTMLButtonElement)}
+          onClick={(event) =>
+            showNextQuestion(event.target as HTMLButtonElement)
+          }
         >
           --&gt;
         </button>

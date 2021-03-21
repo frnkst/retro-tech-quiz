@@ -15,22 +15,18 @@ type ResultsProps = {
 }
 
 export function Results({ results }: ResultsProps) {
-
   const stats = getStats(results)
 
   return (
     <div className="flex flex-col w-screen m-10">
       <div className="md:text-3xl self-center">
-        <div className="font-retro text-center">
-          Well done!
-        </div>
+        <div className="font-retro text-center">Well done!</div>
 
         <div className="font-other m-10 self-center">
           <div>You answered {stats.totalCorrect} questions correct</div>
           <div>You answered {stats.totalWrong} questions wrong</div>
           <div>You answered {stats.total} questions in total</div>
         </div>
-
       </div>
 
       <div className="graph-container self-center w-5/6">
@@ -55,23 +51,26 @@ export function Results({ results }: ResultsProps) {
             <Bar dataKey="wrong" fill="#fc5f53" />
           </BarChart>
         </ResponsiveContainer>
-    </div>
+      </div>
     </div>
   )
 }
 
 type Stats = {
-  total: number,
-  totalCorrect: number,
+  total: number
+  totalCorrect: number
   totalWrong: number
 }
 
 function getStats(results: Result[]) {
-  return results.reduce((acc: Stats, val: Result): Stats => {
-    return {
-      total: acc.total + val.correct + val.wrong,
-      totalCorrect: acc.totalCorrect + val.correct,
-      totalWrong: acc.totalWrong + val.wrong
-    }
-  }, { total: 0, totalCorrect: 0, totalWrong: 0 })
+  return results.reduce(
+    (acc: Stats, val: Result): Stats => {
+      return {
+        total: acc.total + val.correct + val.wrong,
+        totalCorrect: acc.totalCorrect + val.correct,
+        totalWrong: acc.totalWrong + val.wrong,
+      }
+    },
+    { total: 0, totalCorrect: 0, totalWrong: 0 }
+  )
 }
