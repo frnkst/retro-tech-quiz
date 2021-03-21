@@ -18,6 +18,18 @@ Start the application
 yarn start
 ```
 
+Run unit tests
+
+```sh
+yarn test
+```
+
+Run E2E tests
+
+```sh
+yarn cypress
+```
+
 ## Screenshots
 
 ![Screenshot of start screen](cypress/screenshots/screenshots.spec.ts/main_page.png?raw=true 'Start screen')

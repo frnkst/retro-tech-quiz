@@ -15,7 +15,7 @@ type ResultsProps = {
 }
 
 export function Results({ results }: ResultsProps) {
-  const stats = getStats(results)
+  const stats = mapResultsToStats(results)
 
   return (
     <div className="flex flex-col w-screen m-10">
@@ -62,7 +62,7 @@ type Stats = {
   totalWrong: number
 }
 
-function getStats(results: Result[]) {
+function mapResultsToStats(results: Result[]) {
   return results.reduce(
     (acc: Stats, val: Result): Stats => {
       return {

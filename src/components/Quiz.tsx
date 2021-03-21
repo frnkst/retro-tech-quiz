@@ -91,6 +91,7 @@ export function Quiz() {
       </div>
       <div className="flex-row">
         <AskQuestion
+          topicName={topics[quizState.topicNumber].name}
           question={question}
           selectOption={selectOption}
           showResult={quizState.showResult}
