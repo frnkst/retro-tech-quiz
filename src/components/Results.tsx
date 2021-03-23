@@ -22,10 +22,10 @@ export function Results({ results }: ResultsProps) {
       <div className="md:text-3xl self-center">
         <div className="font-retro text-center">Well done!</div>
 
-        <div className="font-other m-10 self-center">
-          <div>You answered {stats.totalCorrect} questions correct</div>
-          <div>You answered {stats.totalWrong} questions wrong</div>
-          <div>You answered {stats.total} questions in total</div>
+        <div className="font-other m-10 self-center text-center">
+          <div>{stats.totalCorrect} correct</div>
+          <div>{stats.totalWrong} wrong</div>
+          <div>{stats.total} questions answered</div>
         </div>
       </div>
 
@@ -47,8 +47,8 @@ export function Results({ results }: ResultsProps) {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="correct" fill="#72d64b" />
-            <Bar dataKey="wrong" fill="#fc5f53" />
+            <Bar dataKey="correct" fill="#6EE7B7" />
+            <Bar dataKey="wrong" fill="#FCA5A5" />
           </BarChart>
         </ResponsiveContainer>
       </div>

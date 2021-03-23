@@ -91,10 +91,6 @@ export const javascript: Topic = {
           text: 'Both are equal in the value and data type.',
           correct: true,
         },
-        {
-          text:
-            'Both x and y are equal in value, type and reference address as well.',
-        },
         { text: 'Both are x and y are equal in value only.' },
         { text: 'Both are not same at all.' },
       ],
@@ -153,6 +149,24 @@ export const javascript: Topic = {
         { text: 'string' },
         { text: 'boolean' },
         { text: 'null' },
+      ],
+    },
+    {
+      level: 3,
+      question: `
+      // What's the output on the console?
+      
+      for (i=0; i<=3; i++) { setTimeout(() => console.log(i), 0)}
+      `,
+      codeSnippet: true,
+      options: [
+        {
+          text: '4 4 4 4',
+          correct: true,
+        },
+        { text: '1 2 3' },
+        { text: '1 2 3 4' },
+        { text: '1 1 1' },
       ],
     },
   ],

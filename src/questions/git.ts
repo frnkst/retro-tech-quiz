@@ -69,7 +69,7 @@ export const git: Topic = {
           text: 'pull',
           correct: true,
         },
-        { text: 'checkout' },
+        { text: 'fetch' },
         { text: 'merge' },
         { text: 'mv' },
       ],

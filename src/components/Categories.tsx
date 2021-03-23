@@ -56,6 +56,7 @@ export type Topic = {
 export type Question = {
   level: 1 | 2 | 3 | 4 | 5
   question: string
+  codeSnippet?: true
   options: Option[]
 }
 

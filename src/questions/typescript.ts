@@ -4,15 +4,21 @@ export const typescript: Topic = {
   name: 'TS',
   questions: [
     {
-      level: 1,
-      question: 'placeholder question',
+      level: 3,
+      question: `
+      // What's the output on the console?
+      
+      for (i=0; i<=3; i++) { setTimeout(() => console.log(i), 0)}
+      `,
+      codeSnippet: true,
       options: [
         {
-          text: 'answer 1',
+          text: '4 4 4 4',
           correct: true,
         },
-        { text: 'answer 2' },
-        { text: 'answer 3' },
+        { text: '1 2 3' },
+        { text: '1 2 3 4' },
+        { text: '1 1 1' },
       ],
     },
   ],

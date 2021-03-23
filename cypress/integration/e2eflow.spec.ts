@@ -7,7 +7,7 @@ describe('E2E flow', () => {
     // Start screen
     cy.get('input[name="player"]').type('Macgyver')
     cy.contains('05:00').click()
-    cy.contains('TS').click()
+    cy.contains('Kotlin').click()
     cy.contains('-->').click()
 
     // Question screen
