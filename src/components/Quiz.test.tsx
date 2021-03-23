@@ -6,6 +6,16 @@ import userEvent from '@testing-library/user-event'
 import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
 
+beforeAll(() => {
+  window.ResizeObserver = ResizeObserver
+})
+
+// https://github.com/recharts/recharts/issues/727
+beforeEach(() => {
+  jest.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(100)
+  jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100)
+})
+
 beforeEach(() => {
   const history = createMemoryHistory()
   history.push('/questions', { topics: someTopic(), time: 300 })

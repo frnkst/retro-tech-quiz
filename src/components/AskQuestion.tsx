@@ -1,5 +1,9 @@
 import { Option, Question } from './Categories'
 import React from 'react'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import prettier from 'prettier/standalone'
+import babylon from 'prettier/parser-babel'
 
 type QuestionProps = {
   topicName: string
@@ -17,12 +21,25 @@ export const AskQuestion = function ({
   return (
     <>
       <div className="flex flex-col m-10 md:text-4xl sm:text-3xl font-other">
-        <div className="self-center m-5 text-center text-gray-500 border-gray-500 border-2 flex flex-col">
+        <div className="self-center m-5 text-gray-500 border-gray-500 border-2 flex flex-col">
           <div className="flex justify-between pt-2 pr-2 pl-2 border-gray-500 border-dashed border-b">
             <span className="md:text-lg">{topicName}</span>
             <span className="md:text-lg">{getLevel(question.level)}</span>
           </div>
-          <div className="p-5">{question.question}</div>
+
+          {question.codeSnippet ? (
+            <div className="items-start">
+              <SyntaxHighlighter
+                className="text-base"
+                language="javascript"
+                style={a11yDark}
+              >
+                {formatCodeBlock(question.question)}
+              </SyntaxHighlighter>
+            </div>
+          ) : (
+            <div className="p-5">{question.question}</div>
+          )}
         </div>
 
         {question.options?.map((option) => (
@@ -56,3 +73,9 @@ function getLevel(level: number): string {
   }
   return 'Hard'
 }
+
+const formatCodeBlock = (code: string) =>
+  prettier.format(code, {
+    parser: 'babel',
+    plugins: [babylon],
+  })
