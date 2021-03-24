@@ -13,11 +13,14 @@ jobs:
       - name: Install dependencies
         run: yarn
 
+      - name: Check formatting
+        run: yarn format:check
+
       - name: Build application
         run: yarn build
 
       - name: Run unit tests
-        run: yarn test:coverage
+        run: yarn test
 
       - name: Run end-to-end tests
         uses: cypress-io/github-action@v2

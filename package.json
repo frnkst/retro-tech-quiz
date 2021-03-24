@@ -8,8 +8,11 @@
     "test": "craco test",
     "test:coverage": "craco test --coverage  --watchAll=false",
     "test:badges": "yarn test:coverage && make-coverage-badge",
+    "format": "yarn prettier --write .",
+    "format:check": "yarn prettier --write .",
     "cypress": "cypress run --config ignoreTestFiles=\"**/screenshots.spec.ts\"",
     "cypress:screenshots": "rm -rf cypress/screenshots/screenshots.spec.ts && cypress run --spec \"cypress/integration/screenshots.spec.ts\"",
+    "update:assets": "yarn format && yarn test:badges && yarn cypress:screenshots",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
