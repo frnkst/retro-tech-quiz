@@ -15,20 +15,16 @@ jobs:
       - name: Install dependencies
         run: yarn
 
+      - name: Check formatting
+        run: yarn format:check
+
       - name: Build application
         run: yarn build
 
-      - name: Run unit tests (and update badges)
-        run: yarn test:badges
+      - name: Run unit tests
+        run: yarn test
 
-      - name: Run end-to-end tests (and update screenshots)
+      - name: Run end-to-end tests
         uses: cypress-io/github-action@v2
         with:
           start: yarn start
-
-      - name: Format all files with prettier
-        run: yarn prettier --write .
-
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Auto commit coverage, screenshots and prettier

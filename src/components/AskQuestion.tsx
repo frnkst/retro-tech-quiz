@@ -33,6 +33,7 @@ export const AskQuestion = function ({
                 className="text-base"
                 language="javascript"
                 style={a11yDark}
+                data-testid="code-block"
               >
                 {formatCodeBlock(question.question)}
               </SyntaxHighlighter>
