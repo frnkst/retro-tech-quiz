@@ -89,21 +89,24 @@ export function Quiz() {
         <Timer time={time} />
         <Score score={quizState.score.toString()} />
       </div>
-      <div className="flex-row">
+      <div>
         <AskQuestion
           topicName={topics[quizState.topicNumber].name}
           question={question}
           selectOption={selectOption}
           showResult={quizState.showResult}
         />
-        <button
-          className="md:text-4xl sm:text-2xl text-gray-500 w-screen font-retro text-center cursor-pointer"
-          onClick={(event) =>
-            showNextQuestion(event.target as HTMLButtonElement)
-          }
-        >
-          --&gt;
-        </button>
+
+        <div className="w-screen flex justify-center">
+          <button
+            className="md:text-4xl text-base md:p-5 p-4 mt-14 text-gray-500 font-retro text-center cursor-pointer border-gray-500 border-2"
+            onClick={(event) =>
+              showNextQuestion(event.target as HTMLButtonElement)
+            }
+          >
+            next
+          </button>
+        </div>
       </div>
     </>
   )

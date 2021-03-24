@@ -18,7 +18,7 @@ describe('Make screenshots for README.md', () => {
   it('quiz page', () => {
     cy.contains('05:00').click()
     cy.contains('Git').click()
-    cy.contains('-->').click()
+    cy.contains('next').click()
     cy.get('button').first().click()
 
     cy.screenshot('quiz_page')
@@ -27,10 +27,10 @@ describe('Make screenshots for README.md', () => {
   it('results page', () => {
     cy.contains('05:00').click()
     cy.contains('Git').click()
-    cy.contains('-->').click()
+    cy.contains('next').click()
     for (let i = 0; i < 10; i++) {
       cy.get('button').first().click()
-      cy.contains('-->').click()
+      cy.contains('next').click()
     }
 
     cy.screenshot('result_page')

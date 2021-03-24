@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Categories, getAllTopics } from './Categories'
 import { useHistory } from 'react-router-dom'
-import { Score } from './Score'
 import { History } from 'history'
 import { prepareTopics } from '../services/question-service'
 
@@ -14,15 +13,9 @@ export function Start() {
   const allTopics = getAllTopics().map((topic) => topic.name)
 
   return (
-    <div className="mx-auto w-96 sm:w-screen font-retro">
-      <div className="flex justify-between">
-        <div className="m-10 text-gray-500 lg:text-4xl md:text-3xl sm:text-2xl">
-          {time}
-        </div>
-        <Score score={'000000'} />
-      </div>
-      <div className="flex flex-col justify-center align-middle md:text-2xl">
-        <div className="py-10 text-center text-gray-500 sm:text-2xl md:text-3xl">
+    <div className="mx-auto w-96 sm:w-screen font-retro md:text-2xl text-base">
+      <div className="flex flex-col justify-center align-middle">
+        <div className="md:py-10 py-5 text-center text-gray-500">
           Player name
         </div>
         <input
@@ -33,26 +26,24 @@ export function Start() {
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.target.value)
           }
-          className="self-center w-3/6 p-5 m-5 text-center border-2 shadow-lg cursor-pointer "
+          className="self-center w-3/6 p-5 md:m-5 m-1 text-center border-2 shadow-lg cursor-pointer "
         />
 
         {getTimeSelection(time, setTime)}
 
-        <div className="py-10 text-center text-gray-500 sm:text-2xl md:text-3xl">
-          Topics
-        </div>
+        <div className="md:py-10 py-3 text-center text-gray-500">Topics</div>
         <Categories
           selectTopics={(topic: string[]) => setSelectedTopics([...topic])}
           selectedTopics={selectedTopics}
           allTopics={allTopics}
         />
       </div>
-      <div className="py-10 text-gray-500 cursor-pointer md:text-3xl sm:text-2xl">
+      <div className="py-10 text-gray-500 cursor-pointer">
         <div
           className="text-center"
           onClick={() => startGame(history, selectedTopics, time)}
         >
-          <button className="p-3">--&gt;</button>
+          <button className="p-3">next</button>
         </div>
       </div>
     </div>
@@ -64,10 +55,8 @@ function getTimeSelection(time: string, setTime: (time: string) => void) {
 
   return (
     <>
-      <div className="py-10 text-center text-gray-500 sm:text-2xl md:text-3xl">
-        Time
-      </div>
-      <div className="flex flex-wrap justify-center md:text-2xl sm:text-1xl">
+      <div className="md:py-10 py-3 text-center text-gray-500">Time</div>
+      <div className="flex flex-wrap justify-center">
         {timeOptions.map((option) => {
           return (
             <button
@@ -76,7 +65,7 @@ function getTimeSelection(time: string, setTime: (time: string) => void) {
                 option === time
                   ? 'shadow-inner text-blue-500'
                   : 'shadow-lg text-gray-500'
-              } border-2 text-gray-500 p-5 m-5 text-center cursor-pointer w-2/6 self-center shadow-lg`}
+              } border-2 text-gray-500 p-5 md:m-5 m-2 text-center cursor-pointer w-2/6 self-center shadow-lg`}
               onClick={() => setTime(option)}
             >
               {option}

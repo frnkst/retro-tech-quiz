@@ -6,7 +6,7 @@ type ScoreProps = {
 
 export function Score({ score }: ScoreProps) {
   return (
-    <div className="m-10 text-gray-500 lg:text-4xl md:text-3xl sm:text-2xl">
+    <div className="text-gray-500 md:text-6xl text-3xl md:mt-10 m-5">
       {score}
     </div>
   )

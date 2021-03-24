@@ -43,7 +43,7 @@ test('show a question', () => {
 })
 
 test('show the next question when clicking next', () => {
-  userEvent.click(screen.getByText('-->'))
+  userEvent.click(screen.getByText('next'))
 
   expect(screen.getByText('question 2')).toBeVisible()
   expect(screen.getByText('correct 2')).toBeVisible()
@@ -52,8 +52,8 @@ test('show the next question when clicking next', () => {
 })
 
 test('show the results when there are no more questions', () => {
-  userEvent.click(screen.getByText('-->'))
-  userEvent.click(screen.getByText('-->'))
+  userEvent.click(screen.getByText('next'))
+  userEvent.click(screen.getByText('next'))
 
   expect(screen.getByText('Well done!')).toBeVisible()
 })
@@ -62,7 +62,7 @@ test('Add to the score when clicking on the correct answer', () => {
   userEvent.click(screen.getByText('correct 1'))
   expect(screen.getByText('100')).toBeVisible()
 
-  userEvent.click(screen.getByText('-->'))
+  userEvent.click(screen.getByText('next'))
 
   userEvent.click(screen.getByText('correct 2'))
   expect(screen.getByText('200')).toBeVisible()
@@ -72,7 +72,7 @@ test('Subtract from the score when clicking on the wrong answer', () => {
   userEvent.click(screen.getByText('wrong 1a'))
   expect(screen.getByText('-100')).toBeVisible()
 
-  userEvent.click(screen.getByText('-->'))
+  userEvent.click(screen.getByText('next'))
 
   userEvent.click(screen.getByText('wrong 2a'))
   expect(screen.getByText('-200')).toBeVisible()

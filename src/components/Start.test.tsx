@@ -7,14 +7,6 @@ beforeEach(() => {
   render(<Start />)
 })
 
-test('show the timer', () => {
-  expect(screen.getByText('00:00')).toBeVisible()
-})
-
-test('show the high score', () => {
-  expect(screen.getByText('000000')).toBeVisible()
-})
-
 test('show the time selection', () => {
   expect(screen.getByText('Time')).toBeVisible()
 })
@@ -55,5 +47,5 @@ test('select some topics', () => {
 })
 
 test('show let me in', () => {
-  expect(screen.getByText('-->')).toBeVisible()
+  expect(screen.getByText('next')).toBeVisible()
 })
