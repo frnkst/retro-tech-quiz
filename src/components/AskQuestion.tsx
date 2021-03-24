@@ -20,17 +20,17 @@ export const AskQuestion = function ({
 }: QuestionProps) {
   return (
     <>
-      <div className="flex flex-col m-10 md:text-4xl sm:text-3xl font-other">
-        <div className="self-center m-5 text-gray-500 border-gray-500 border-2 flex flex-col">
-          <div className="flex justify-between pt-2 pr-2 pl-2 border-gray-500 border-dashed border-b">
-            <span className="md:text-lg">{topicName}</span>
-            <span className="md:text-lg">{getLevel(question.level)}</span>
+      <div className="flex flex-col md:m-10 m-2 md:text-4xl text-base font-other">
+        <div className="self-center m-5 text-gray-500 border-gray-500 border-2 flex flex-col w-5/6">
+          <div className="flex justify-between md:pt-2 pt-0 pr-2 pl-2 border-gray-500 border-dashed border-b">
+            <span>{topicName}</span>
+            <span>{getLevel(question.level)}</span>
           </div>
 
           {question.codeSnippet ? (
             <div className="items-start">
               <SyntaxHighlighter
-                className="text-base"
+                className="md:text-base text-xs"
                 language="javascript"
                 style={a11yDark}
                 data-testid="code-block"
@@ -46,7 +46,7 @@ export const AskQuestion = function ({
         {question.options?.map((option) => (
           <button
             key={option.text}
-            className={`border-2 p-5 m-5 text-gray-500 text-center cursor-pointer w-3/6 self-center shadow-lg
+            className={`border-2 md:p-5 md:m-5 p-4 m-3 text-gray-500 text-center cursor-pointer md:w-4/6 w-5/6 self-center shadow-lg
               ${showResult && option.correct ? 'bg-green-300' : ''}
               ${
                 showResult && option.selected

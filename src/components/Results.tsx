@@ -18,7 +18,7 @@ export function Results({ results }: ResultsProps) {
   const stats = mapResultsToStats(results)
 
   return (
-    <div className="flex flex-col w-screen m-10">
+    <div className="flex flex-col w-screen md:m-10 m-3">
       <div className="md:text-3xl self-center">
         <div className="font-retro text-center">Well done!</div>
 
@@ -29,7 +29,7 @@ export function Results({ results }: ResultsProps) {
         </div>
       </div>
 
-      <div className="graph-container self-center w-5/6">
+      <div className="graph-container self-center md:w-5/6 w-screen">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             width={500}

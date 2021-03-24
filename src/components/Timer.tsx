@@ -19,7 +19,7 @@ export function Timer({ time }: TimerProps) {
 
   return (
     <>
-      <div className="md:text-6xl sm:text-3xl text-gray-500 m-10">
+      <div className="md:text-6xl text-3xl text-gray-500 md:mt-10 m-5">
         {formatTime(currentTime)}
       </div>
     </>
