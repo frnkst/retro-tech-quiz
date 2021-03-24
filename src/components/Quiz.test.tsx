@@ -43,6 +43,7 @@ test('show a question', () => {
 })
 
 test('show the next question when clicking next', () => {
+  userEvent.click(screen.getByText('correct 1'))
   userEvent.click(screen.getByText('next'))
 
   expect(screen.getByText('question 2')).toBeVisible()
@@ -52,7 +53,9 @@ test('show the next question when clicking next', () => {
 })
 
 test('show the results when there are no more questions', () => {
+  userEvent.click(screen.getByText('correct 1'))
   userEvent.click(screen.getByText('next'))
+  userEvent.click(screen.getByText('correct 2'))
   userEvent.click(screen.getByText('next'))
 
   expect(screen.getByText('Well done!')).toBeVisible()

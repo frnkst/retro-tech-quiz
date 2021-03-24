@@ -97,16 +97,18 @@ export function Quiz() {
           showResult={quizState.showResult}
         />
 
-        <div className="w-screen flex justify-center">
-          <button
-            className="md:text-4xl text-base md:p-5 p-4 mt-14 text-gray-500 font-retro text-center cursor-pointer border-gray-500 border-2"
-            onClick={(event) =>
-              showNextQuestion(event.target as HTMLButtonElement)
-            }
-          >
-            next
-          </button>
-        </div>
+        {quizState.showResult && (
+          <div className="w-screen flex justify-center">
+            <button
+              className="md:text-4xl text-base md:p-5 p-4 md:mt-14 m-4 text-gray-500 font-retro text-center cursor-pointer border-gray-500 border-2"
+              onClick={(event) =>
+                showNextQuestion(event.target as HTMLButtonElement)
+              }
+            >
+              next
+            </button>
+          </div>
+        )}
       </div>
     </>
   )

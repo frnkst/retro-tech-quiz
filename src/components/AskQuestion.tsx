@@ -21,8 +21,8 @@ export const AskQuestion = function ({
   return (
     <>
       <div className="flex flex-col md:m-10 m-2 md:text-4xl text-base font-other">
-        <div className="self-center m-5 text-gray-500 border-gray-500 border-2 flex flex-col w-5/6">
-          <div className="flex justify-between md:pt-2 pt-0 pr-2 pl-2 border-gray-500 border-dashed border-b">
+        <div className="self-center md:m-5 m-2 text-gray-500 border-gray-500 border-2 flex flex-col w-5/6">
+          <div className="flex justify-between md:pt-2 pt-0 pr-2 pl-2 border-gray-500 border-dashed border-b md:text-2xl text-sm">
             <span>{topicName}</span>
             <span>{getLevel(question.level)}</span>
           </div>
@@ -46,7 +46,7 @@ export const AskQuestion = function ({
         {question.options?.map((option) => (
           <button
             key={option.text}
-            className={`border-2 md:p-5 md:m-5 p-4 m-3 text-gray-500 text-center cursor-pointer md:w-4/6 w-5/6 self-center shadow-lg
+            className={`border-2 md:p-5 md:m-5 p-4 m-2 text-gray-500 text-center cursor-pointer md:w-4/6 w-5/6 self-center shadow-lg
               ${showResult && option.correct ? 'bg-green-300' : ''}
               ${
                 showResult && option.selected
