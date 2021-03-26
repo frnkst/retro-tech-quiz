@@ -13,7 +13,7 @@ beforeEach(() => {
 test('show the first question and answers', () => {
   setup()
 
-  expect(screen.getByText(defaultQuestion.question)).toBeVisible()
+  expect(screen.getByText(defaultQuestion.question as string)).toBeVisible()
   expect(screen.getByText(defaultQuestion.options[0].text)).toBeVisible()
   expect(screen.getByText(defaultQuestion.options[1].text)).toBeVisible()
   expect(screen.getByText(defaultQuestion.options[2].text)).toBeVisible()
@@ -49,13 +49,12 @@ describe('show level', () => {
   })
 })
 
-test('format the code with prettier', () => {
-  const questionWithCodeSnippet: Question = {
+test("format the code with prettier if it's javascript", () => {
+  const questionWithCode: Question = {
     ...defaultQuestion,
-    question: 'const a=5; const b=5',
-    codeSnippet: true,
+    question: { code: 'const a=5; const b=5', language: 'javascript' },
   }
-  setup(questionWithCodeSnippet)
+  setup(questionWithCode)
 
   expect(screen.getByTestId('code-block')).toBeVisible()
 })

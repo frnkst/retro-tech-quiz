@@ -4,15 +4,24 @@ export const kotlin: Topic = {
   name: 'Kotlin',
   questions: [
     {
-      level: 1,
-      question: 'placeholder question',
+      level: 3,
+      question: {
+        code: `
+          // Does the following inheritance structure compile?
+          class A{
+          }
+
+          class B : A(){
+          }
+      `,
+        language: 'kotlin',
+      },
       options: [
         {
-          text: 'answer 1',
+          text: 'No',
           correct: true,
         },
-        { text: 'answer 2' },
-        { text: 'answer 3' },
+        { text: 'Yes' },
       ],
     },
   ],

@@ -1,4 +1,4 @@
-import { Option, Question } from './Categories'
+import { Code, Option, Question } from './Categories'
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
@@ -27,19 +27,19 @@ export const AskQuestion = function ({
             <span>{getLevel(question.level)}</span>
           </div>
 
-          {question.codeSnippet ? (
+          {typeof question.question === 'string' ? (
+            <div className="p-5">{question.question}</div>
+          ) : (
             <div className="items-start">
               <SyntaxHighlighter
                 className="md:text-base text-xs"
-                language="javascript"
+                language={question.question.language}
                 style={a11yDark}
                 data-testid="code-block"
               >
                 {formatCodeBlock(question.question)}
               </SyntaxHighlighter>
             </div>
-          ) : (
-            <div className="p-5">{question.question}</div>
           )}
         </div>
 
@@ -75,8 +75,13 @@ function getLevel(level: number): string {
   return 'Hard'
 }
 
-const formatCodeBlock = (code: string) =>
-  prettier.format(code, {
-    parser: 'babel',
-    plugins: [babylon],
-  })
+const formatCodeBlock = (code: Code) => {
+  if (code.language === 'javascript') {
+    return prettier.format(code.code, {
+      parser: 'babel',
+      plugins: [babylon],
+    })
+  }
+
+  return code.code
+}
