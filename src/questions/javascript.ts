@@ -153,12 +153,14 @@ export const javascript: Topic = {
     },
     {
       level: 3,
-      question: `
+      question: {
+        code: `
       // What's the output on the console?
       
       for (i=0; i<=3; i++) { setTimeout(() => console.log(i), 0)}
       `,
-      codeSnippet: true,
+        language: 'javascript',
+      },
       options: [
         {
           text: '4 4 4 4',

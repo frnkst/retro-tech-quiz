@@ -53,9 +53,14 @@ export type Topic = {
   questions: Question[]
 }
 
+export type Code = {
+  code: string
+  language: string
+}
+
 export type Question = {
   level: 1 | 2 | 3 | 4 | 5
-  question: string
+  question: string | Code
   codeSnippet?: true
   options: Option[]
 }
