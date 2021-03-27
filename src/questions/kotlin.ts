@@ -7,12 +7,12 @@ export const kotlin: Topic = {
       level: 3,
       question: {
         code: `
-          // Does the following inheritance structure compile?
-          class A{
-          }
+// Does the following inheritance structure compile?
+class A{
+}
 
-          class B : A(){
-          }
+class B : A(){
+}
       `,
         language: 'kotlin',
       },

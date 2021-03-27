@@ -155,9 +155,9 @@ export const javascript: Topic = {
       level: 3,
       question: {
         code: `
-      // What's the output on the console?
-      
-      for (i=0; i<=3; i++) { setTimeout(() => console.log(i), 0)}
+// What's the output on the console?
+
+for (i=0; i<=3; i++) { setTimeout(() => console.log(i), 0)}
       `,
         language: 'javascript',
       },

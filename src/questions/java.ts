@@ -7,21 +7,21 @@ export const java: Topic = {
       level: 3,
       question: {
         code: `
-          class Super {
-            public int index = 1;
-          }
-    
-          class App extends Super {
-    
-            public App(int index) {
-              index = index;
-            }
-    
-            public static void main(String args[]) {
-              App myApp = new App(10);
-              System.out.println(myApp.index);
-            }
-          }
+class Super {
+  public int index = 1;
+}
+
+class App extends Super {
+
+  public App(int index) {
+    index = index;
+  }
+
+  public static void main(String args[]) {
+    App myApp = new App(10);
+    System.out.println(myApp.index);
+  }
+}
       `,
         language: 'java',
       },
@@ -39,16 +39,16 @@ export const java: Topic = {
       level: 2,
       question: {
         code: `
-          class TestApp {
-            protected int x, y;
-          }
+class TestApp {
+  protected int x, y;
+}
 
-          class Main {
-              public static void main(String args[]) {
-                  TestApp app = new TestApp();
-                  System.out.println(app.x + " " + app.y);
-              }
-          }
+class Main {
+    public static void main(String args[]) {
+        TestApp app = new TestApp();
+        System.out.println(app.x + " " + app.y);
+    }
+}
       `,
         language: 'java',
       },
@@ -66,14 +66,14 @@ export const java: Topic = {
       level: 2,
       question: {
         code: `
-          class TestApp {
-            public static void main(String[] args) {
-              for (int index = 0; 1; index++) {
-                System.out.println("Welcome");
-                break;
-              }
-            }
-          }
+class TestApp {
+  public static void main(String[] args) {
+    for (int index = 0; 1; index++) {
+      System.out.println("Welcome");
+      break;
+    }
+  }
+}
       `,
         language: 'java',
       },
@@ -91,14 +91,14 @@ export const java: Topic = {
       level: 1,
       question: {
         code: `
-          class TestApp {
-            public static void main(String[] args) {
-              for (int index = 0; true; index++) {
-                System.out.println("Welcome");
-                break;
-                }
-            }
-          }
+class TestApp {
+  public static void main(String[] args) {
+    for (int index = 0; true; index++) {
+      System.out.println("Welcome");
+      break;
+      }
+  }
+}
       `,
         language: 'java',
       },
@@ -116,20 +116,20 @@ export const java: Topic = {
       level: 2,
       question: {
         code: `
-          class TestApp {
-            int i[] = { 0 };
+class TestApp {
+  int i[] = { 0 };
 
-            public static void main(String args[]) {
-              int i[] = { 1 };
-              alter(i);
-              System.out.println(i[0]);
-            }
+  public static void main(String args[]) {
+    int i[] = { 1 };
+    alter(i);
+    System.out.println(i[0]);
+  }
 
-            public static void alter(int i[]) {
-              int j[] = { 2 };
-              i = j;
-            }
-          }
+  public static void alter(int i[]) {
+    int j[] = { 2 };
+    i = j;
+  }
+}
       `,
         language: 'java',
       },
@@ -147,14 +147,14 @@ export const java: Topic = {
       level: 2,
       question: {
         code: `
-          class TestApp {
-            String args[] = { "1", "2" };
+class TestApp {
+  String args[] = { "1", "2" };
 
-            public static void main(String args[]) {
-                if (args.length > 0)
-                    System.out.println(args.length);
-            }
-          }
+  public static void main(String args[]) {
+      if (args.length > 0)
+          System.out.println(args.length);
+  }
+}
       `,
         language: 'java',
       },
@@ -172,16 +172,16 @@ export const java: Topic = {
       level: 2,
       question: {
         code: `
-          class TestApp {
-            public static void main() {
-                int odd = 1;
-                if (odd) {
-                    System.out.println("odd");
-                } else {
-                    System.out.println("even");
-                }
-            }
-          }
+class TestApp {
+  public static void main() {
+      int odd = 1;
+      if (odd) {
+          System.out.println("odd");
+      } else {
+          System.out.println("even");
+      }
+  }
+}
       `,
         language: 'java',
       },
