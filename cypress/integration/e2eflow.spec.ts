@@ -11,13 +11,10 @@ describe('E2E flow', () => {
     cy.contains('next').click()
 
     // Question screen
-    cy.contains('placeholder question').should('be.visible')
-    cy.contains('answer 1').should('be.visible')
-    cy.contains('answer 2').should('be.visible')
-    cy.contains('answer 3').should('be.visible')
-    cy.contains('answer 1').click()
-    cy.contains('next').click()
-
+    for (let i = 0; i < 2; i++) {
+      cy.get('button').first().click()
+      cy.contains('next').click()
+    }
     // Result screen
     cy.contains('Well done!').should('be.visible')
   })

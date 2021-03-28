@@ -6,14 +6,16 @@ export function prepareTopics(selectedTopics: string[]) {
     selectedTopics.includes(topic.name)
   )
 
-  shuffleOptions(filteredTopics)
+  shuffleQuestionsAndOptions(filteredTopics)
   return filteredTopics
 }
 
-function shuffleOptions(filteredTopics: Topic[]) {
-  filteredTopics.forEach((topic) =>
+function shuffleQuestionsAndOptions(topics: Topic[]) {
+  topics.forEach((topic) => {
     topic.questions.forEach((question) => {
       question.options = shuffle(question.options)
     })
-  )
+
+    topic.questions = shuffle(topic.questions)
+  })
 }

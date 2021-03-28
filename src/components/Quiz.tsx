@@ -57,7 +57,8 @@ export function Quiz() {
       setResults([...results])
       setQuizState({ ...quizState, score: score, showResult: true })
     } else {
-      const score = quizState.score - 100
+      let score = quizState.score - (600 - question.level * 100) / 4
+      score = score > 0 ? score : 0
       updateResult(results, question, 'wrong')
       setResults([...results])
       setQuizState({ ...quizState, score: score, showResult: true })

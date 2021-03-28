@@ -73,12 +73,12 @@ test('Add to the score when clicking on the correct answer', () => {
 
 test('Subtract from the score when clicking on the wrong answer', () => {
   userEvent.click(screen.getByText('wrong 1a'))
-  expect(screen.getByText('-100')).toBeVisible()
+  expect(screen.getByText('0')).toBeVisible()
 
   userEvent.click(screen.getByText('next'))
 
   userEvent.click(screen.getByText('wrong 2a'))
-  expect(screen.getByText('-200')).toBeVisible()
+  expect(screen.getByText('0')).toBeVisible()
 })
 
 function someTopic(): Topic[] {

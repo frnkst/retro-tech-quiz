@@ -2,7 +2,6 @@ import { webdevelopment } from '../questions/webdevelopment'
 import { javascript } from '../questions/javascript'
 import { kotlin } from '../questions/kotlin'
 import { typescript } from '../questions/typescript'
-import { cicd } from '../questions/cicd'
 import { git } from '../questions/git'
 import { java } from '../questions/java'
 
@@ -72,5 +71,5 @@ export type Option = {
 }
 
 export function getAllTopics() {
-  return [javascript, webdevelopment, kotlin, java, typescript, git, cicd]
+  return [javascript, webdevelopment, kotlin, java, typescript, git]
 }

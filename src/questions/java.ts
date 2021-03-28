@@ -195,5 +195,191 @@ class TestApp {
         { text: 'Run-time exception' },
       ],
     },
+    {
+      level: 2,
+      question: 'This is being used to find and fix bugs in Java programs',
+      options: [
+        {
+          text: 'JBD',
+          correct: true,
+        },
+        { text: 'JVM' },
+        { text: 'JRE' },
+        { text: 'JDK' },
+      ],
+    },
+    {
+      level: 2,
+      question: 'Which of the following is a valid declaration of a char?',
+      options: [
+        {
+          text: "char ch = '\\utea';",
+          correct: true,
+        },
+        { text: "char ca = 'tea';" },
+        { text: 'char cr = \u0223;' },
+        { text: "char cc = '\\itea';\n" },
+      ],
+    },
+    {
+      level: 3,
+      question: "What's the result of ++z + y - y + z + x++ ?",
+      options: [
+        {
+          text: '24',
+          correct: true,
+        },
+        { text: '23' },
+        { text: '20' },
+        { text: '25' },
+      ],
+    },
+    {
+      level: 3,
+      question: 'Which of the following for loop declaration is not valid?',
+      options: [
+        {
+          text: 'for ( int i = 99; i >= 0; i / 9 )',
+          correct: true,
+        },
+        { text: 'for ( int i = 7; i <= 77; i += 7 )' },
+        { text: 'for ( int i = 20; i >= 2; - -i )' },
+        { text: 'for ( int i = 2; i <= 20; i = 2* i )' },
+      ],
+    },
+    {
+      level: 2,
+      question:
+        'Which method of the Class.class is used to determine the name of a class represented by the class object as a String?',
+      options: [
+        {
+          text: 'getName()',
+          correct: true,
+        },
+        { text: 'getClass()' },
+        { text: 'intern()' },
+        { text: 'toString()' },
+      ],
+    },
+    {
+      level: 1,
+      question:
+        'In which process, a local variable has the same name as one of the instance variables?',
+      options: [
+        {
+          text: 'Variable Shadowing',
+          correct: true,
+        },
+        { text: 'Serialization' },
+        { text: 'Abstraction' },
+        { text: 'Multi-threading' },
+      ],
+    },
+    {
+      level: 1,
+      question:
+        'Which of the following is true about the anonymous inner class?',
+      options: [
+        {
+          text: 'It has no class name',
+          correct: true,
+        },
+        { text: 'It has only methods' },
+        { text: "Objects can't be created" },
+        { text: 'It has a fixed class name' },
+      ],
+    },
+    {
+      level: 2,
+      question: 'What is an interface with no fields or methods known as?',
+      options: [
+        {
+          text: 'Marker Interface',
+          correct: true,
+        },
+        { text: 'Runnable Interface' },
+        { text: 'Abstract Interface' },
+        { text: 'CharSequence Interface' },
+      ],
+    },
+    {
+      level: 3,
+      question:
+        'Which of these classes are the direct subclasses of the Throwable class?',
+      options: [
+        {
+          text: 'Error and Exception class',
+          correct: true,
+        },
+        { text: 'RuntimeException and Error class' },
+        { text: 'Exception and VirtualMachineError class' },
+        { text: 'IOException and VirtualMachineError class' },
+      ],
+    },
+    {
+      level: 2,
+      question:
+        'In which memory a String is stored, when we create a string using new operator?',
+      options: [
+        {
+          text: 'Heap memory',
+          correct: true,
+        },
+        { text: 'String memory' },
+        { text: 'Stack' },
+        { text: 'Random storage space' },
+      ],
+    },
+    {
+      level: 3,
+      question:
+        'What is the initial quantity of this ArrayList? ArrayList list = new ArrayList();',
+      options: [
+        {
+          text: '10',
+          correct: true,
+        },
+        { text: '5' },
+        { text: '0' },
+        { text: '100' },
+      ],
+    },
+    {
+      level: 4,
+      question: 'What happens if a thread goes to sleep?',
+      options: [
+        {
+          text: 'It does not release any locks.',
+          correct: true,
+        },
+        { text: 'It releases all the locks it has.' },
+        { text: 'It releases half of its locks.' },
+        { text: 'It releases all of its lock except one.' },
+      ],
+    },
+    {
+      level: 5,
+      question: {
+        code: `
+public static synchronized void main(String[] args) throws  InterruptedException {  
+  Thread f = new Thread();  
+  f.start();  
+  System.out.print("A");  
+  f.wait(1000);  
+  System.out.print("B");  
+}  
+      `,
+        language: 'java',
+      },
+      options: [
+        {
+          text: 'A will be printed, and then an exception is thrown.',
+          correct: true,
+        },
+        { text: 'It prints A and B with a 1000 seconds delay between them' },
+        { text: 'It only prints A and exits\n' },
+        { text: 'It only prints B and exits' },
+      ],
+    },
   ],
 }
