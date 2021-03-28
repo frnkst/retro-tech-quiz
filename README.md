@@ -1,4 +1,4 @@
-# Retro Tech Quiz · ![main branch workflow](https://github.com/frnkst/retro-tech-quiz/actions/workflows/main.yml/badge.svg) ![code coverage](./coverage/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+# Retro Tech Quiz · ![main branch workflow](https://github.com/frnkst/retro-tech-quiz/actions/workflows/main.yml/badge.svg) ![code coverage](./coverage/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) ![lighthouse_performance](./lighthouse-badges/lighthouse_performance.svg) ![lighthouse_performance](./lighthouse-badges/lighthouse_best-practices.svg) ![lighthouse_performance](./lighthouse-badges/lighthouse_seo.svg) ![lighthouse_performance](./lighthouse-badges/lighthouse_pwa.svg) ![lighthouse_performance](./lighthouse-badges/lighthouse_accessibility.svg)
 
 Try it: https://void0.ch
 
