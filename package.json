@@ -46,7 +46,7 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@babel/parser": "^7.13.12",
+    "@babel/parser": "^7.13.13",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
