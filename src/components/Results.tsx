@@ -14,18 +14,23 @@ type ResultsProps = {
   results: Result[]
 }
 
-export function Results({ results }: ResultsProps) {
-  const stats = mapResultsToStats(results)
+type LevelSummary = {
+  name: string
+  level: number
+  correct: number
+  wrong: number
+}
 
+export function Results({ results }: ResultsProps) {
   return (
     <div className="flex flex-col w-screen md:m-10 m-3">
       <div className="md:text-3xl self-center">
         <div className="font-retro text-center">Well done!</div>
 
         <div className="font-other m-10 self-center text-center">
-          <div>{stats.totalCorrect} correct</div>
-          <div>{stats.totalWrong} wrong</div>
-          <div>{stats.total} questions answered</div>
+          <div>{getTotalCorrect(results)} correct</div>
+          <div>{results.length - getTotalCorrect(results)} wrong</div>
+          <div>{results.length} questions answered</div>
         </div>
       </div>
 
@@ -34,7 +39,7 @@ export function Results({ results }: ResultsProps) {
           <BarChart
             width={500}
             height={300}
-            data={results}
+            data={mapResultsToLevelSummary(results)}
             margin={{
               top: 20,
               right: 30,
@@ -56,21 +61,32 @@ export function Results({ results }: ResultsProps) {
   )
 }
 
-type Stats = {
-  total: number
-  totalCorrect: number
-  totalWrong: number
+function getTotalCorrect(results: Result[]) {
+  const correct = results.filter((result) => result.correctAnswer)
+  return correct.length
 }
 
-function mapResultsToStats(results: Result[]) {
-  return results.reduce(
-    (acc: Stats, val: Result): Stats => {
-      return {
-        total: acc.total + val.correct + val.wrong,
-        totalCorrect: acc.totalCorrect + val.correct,
-        totalWrong: acc.totalWrong + val.wrong,
+function mapResultsToLevelSummary(results: Result[]) {
+  const levelSummaries: LevelSummary[] = []
+
+  results.forEach((result) => {
+    const levelSummary = levelSummaries.find(
+      (summary) => summary.level === result.question.level
+    )
+    if (levelSummary) {
+      if (result.correctAnswer) {
+        levelSummary.correct = levelSummary.correct + 1
+      } else {
+        levelSummary.wrong = levelSummary.wrong + 1
       }
-    },
-    { total: 0, totalCorrect: 0, totalWrong: 0 }
-  )
+    } else {
+      levelSummaries.push({
+        name: `Level ${result.question.level}`,
+        level: result.question.level,
+        correct: result.correctAnswer ? 1 : 0,
+        wrong: result.correctAnswer ? 0 : 1,
+      })
+    }
+  })
+  return levelSummaries.sort((a, b) => (a.level > b.level ? 1 : -1))
 }

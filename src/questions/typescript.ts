@@ -4,21 +4,44 @@ export const typescript: Topic = {
   name: 'TS',
   questions: [
     {
-      level: 3,
-      question: `
-      // What's the output on the console?
-      
-      for (i=0; i<=3; i++) { setTimeout(() => console.log(i), 0)}
-      `,
-      codeSnippet: true,
+      level: 1,
+      question: 'TypeScript is a typed superset of ...',
       options: [
         {
-          text: '4 4 4 4',
+          text: 'JavaScript',
           correct: true,
         },
-        { text: '1 2 3' },
-        { text: '1 2 3 4' },
-        { text: '1 1 1' },
+        { text: 'Java' },
+        { text: 'React' },
+        { text: 'HTML' },
+      ],
+    },
+    {
+      level: 1,
+      question:
+        'Which command is used to generate a JavaScript file from a TypeScript file?',
+      options: [
+        {
+          text: 'tsc fileName.ts',
+          correct: true,
+        },
+        { text: 'npm filename.ts' },
+        { text: 'tsc -js fileName.ts' },
+        { text: 'typescript-compile filename.ts' },
+      ],
+    },
+    {
+      level: 1,
+      question:
+        'Which of the following statement declares a variable in TypeScript?',
+      options: [
+        {
+          text: 'const myVar:number = 123',
+          correct: true,
+        },
+        { text: "const myVar:number = '123'" },
+        { text: 'const myVar:Number = 123' },
+        { text: 'const number myVar = 123' },
       ],
     },
   ],
