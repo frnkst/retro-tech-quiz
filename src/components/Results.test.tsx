@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { Results } from './Results'
+import { Result } from './Quiz'
 
 beforeAll(() => {
   window.ResizeObserver = ResizeObserver
@@ -16,4 +17,11 @@ test('result summary is shown', () => {
   expect(screen.getByText('Well done!')).toBeVisible()
 })
 
-const someResults = () => [{ name: 'Level 1', level: 1, correct: 5, wrong: 4 }]
+function someResults(): Result[] {
+  return [
+    {
+      question: { level: 5, question: 'bla', options: [{ text: 'test' }] },
+      correctAnswer: true,
+    },
+  ]
+}

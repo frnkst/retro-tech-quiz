@@ -12,10 +12,8 @@ type LocationState = {
 }
 
 export type Result = {
-  name: string
-  level: number
-  correct: number
-  wrong: number
+  question: Question
+  correctAnswer: boolean
 }
 
 export function Quiz() {
@@ -48,24 +46,31 @@ export function Quiz() {
     return topic.questions[questionNumber]
   }
 
+  function updateLiveScore(option: Option) {
+    let score: number
+    if (option.correct) {
+      score = quizState.score + question.level * 100
+    } else {
+      score = quizState.score - (600 - question.level * 100) / 4
+      score = score > 0 ? score : 0
+    }
+
+    setQuizState({ ...quizState, score: score, showResult: true })
+  }
+
   function selectOption(option: Option) {
     option.selected = true
 
-    if (option.correct) {
-      const score = quizState.score + question.level * 100
-      updateResult(results, question, 'correct')
-      setResults([...results])
-      setQuizState({ ...quizState, score: score, showResult: true })
-    } else {
-      let score = quizState.score - (600 - question.level * 100) / 4
-      score = score > 0 ? score : 0
-      updateResult(results, question, 'wrong')
-      setResults([...results])
-      setQuizState({ ...quizState, score: score, showResult: true })
-    }
+    setResults([
+      ...results,
+      { question: question, correctAnswer: !!option.correct },
+    ])
+    updateLiveScore(option)
   }
 
-  const showNextQuestion = (eventTarget: HTMLButtonElement) => {
+  const showNextQuestion = (
+    eventTarget: HTMLButtonElement | undefined = undefined
+  ) => {
     if (eventTarget) {
       eventTarget.blur()
     }
@@ -83,6 +88,12 @@ export function Quiz() {
   }
 
   let question = getQuestion()
+
+  document.onkeydown = (event) => {
+    if (event.key === 'ArrowRight') {
+      showNextQuestion()
+    }
+  }
 
   return (
     <>
@@ -113,36 +124,4 @@ export function Quiz() {
       </div>
     </>
   )
-}
-
-// Sorry this function is horrible ;(. Please refactor
-function updateResult(
-  results: Result[],
-  question: Question,
-  type: 'correct' | 'wrong'
-) {
-  const levelResult = results.find((res) => res.level === question.level)
-  if (type === 'correct') {
-    if (levelResult) {
-      levelResult.correct += 1
-    } else {
-      results.push({
-        name: `Level ${question.level}`,
-        level: question.level,
-        correct: 1,
-        wrong: 0,
-      })
-    }
-  } else {
-    if (levelResult) {
-      levelResult.wrong += 1
-    } else {
-      results.push({
-        name: `Level ${question.level}`,
-        level: question.level,
-        correct: 0,
-        wrong: 1,
-      })
-    }
-  }
 }
