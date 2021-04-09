@@ -43,7 +43,9 @@ export function Start() {
           className="text-center"
           onClick={() => startGame(history, selectedTopics, time)}
         >
-          <button className="p-3">next</button>
+          <button className="md:text-4xl text-base md:p-5 p-4 md:mt-14 m-4 text-gray-500 font-retro text-center cursor-pointer border-gray-500 border-2">
+            next
+          </button>
         </div>
       </div>
     </div>
