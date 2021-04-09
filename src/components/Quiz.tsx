@@ -14,6 +14,7 @@ type LocationState = {
 export type Result = {
   question: Question
   correctAnswer: boolean
+  responseTime: number
 }
 
 export function Quiz() {
@@ -28,7 +29,7 @@ export function Quiz() {
     showResult: false,
   })
 
-  const [results, setResults] = useState<any>([])
+  const [results, setResults] = useState<Result[]>([])
 
   function getQuestion(): Question {
     const { topicNumber, questionNumber } = quizState
@@ -63,7 +64,11 @@ export function Quiz() {
 
     setResults([
       ...results,
-      { question: question, correctAnswer: !!option.correct },
+      {
+        question: question,
+        correctAnswer: !!option.correct,
+        responseTime: Date.now() - startTime,
+      },
     ])
     updateLiveScore(option)
   }
@@ -94,6 +99,8 @@ export function Quiz() {
       showNextQuestion()
     }
   }
+
+  const startTime = Date.now()
 
   return (
     <>
