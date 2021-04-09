@@ -89,7 +89,7 @@ export function Results({ results }: ResultsProps) {
           {results.map((result, index) => {
             return (
               <div key={index}>
-                <span>{index + 1} : </span>
+                <span>{index} : </span>
 
                 {typeof result.question.question === 'string' ? (
                   <span>{result.question.question} &nbsp;</span>

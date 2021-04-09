@@ -16,6 +16,6 @@ describe('E2E flow', () => {
       cy.contains('next').click()
     }
     // Result screen
-    cy.contains('Well done!').should('be.visible')
+    cy.contains('Summary').should('be.visible')
   })
 })
