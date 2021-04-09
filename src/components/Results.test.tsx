@@ -14,7 +14,7 @@ beforeEach(() => {
 
 test('result summary is shown', () => {
   render(<Results results={someResults()} />)
-  expect(screen.getByText('Well done!')).toBeVisible()
+  expect(screen.getByText('Summary')).toBeVisible()
 })
 
 function someResults(): Result[] {
@@ -22,6 +22,7 @@ function someResults(): Result[] {
     {
       question: { level: 5, question: 'bla', options: [{ text: 'test' }] },
       correctAnswer: true,
+      responseTime: 1200,
     },
   ]
 }
