@@ -7,6 +7,7 @@ module.exports = {
         retro: "'Press Start 2P', cursive",
         handwrite: "'Handlee', cursive",
         other: "'Advent Pro', cursive",
+        icons: "'Material Icons', cursive",
       },
     },
   },

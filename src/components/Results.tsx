@@ -1,6 +1,7 @@
 import { Result } from './Quiz'
 import {
   BarChart,
+  LineChart,
   Bar,
   XAxis,
   YAxis,
@@ -8,6 +9,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  Line,
 } from 'recharts'
 
 type ResultsProps = {
@@ -25,13 +27,17 @@ export function Results({ results }: ResultsProps) {
   return (
     <div className="flex flex-col w-screen md:m-10 m-3">
       <div className="md:text-3xl self-center">
-        <div className="font-retro text-center">Well done!</div>
+        <div className="font-retro text-center m-10">Summary</div>
 
         <div className="font-other m-10 self-center text-center">
           <div>{getTotalCorrect(results)} correct</div>
           <div>{results.length - getTotalCorrect(results)} wrong</div>
           <div>{results.length} questions answered</div>
         </div>
+      </div>
+
+      <div className="font-retro text-center m-10">
+        Correct/wrong by difficulty
       </div>
 
       <div className="graph-container self-center md:w-5/6 w-screen">
@@ -56,6 +62,50 @@ export function Results({ results }: ResultsProps) {
             <Bar dataKey="wrong" fill="#FCA5A5" />
           </BarChart>
         </ResponsiveContainer>
+
+        <div className="font-retro text-center m-10">
+          Response time by question number
+        </div>
+
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart width={500} height={300} data={getResponseTimes(results)}>
+            <XAxis dataKey="question" name="Question number" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+            <Line
+              type="monotone"
+              dataKey="responseTime"
+              stroke="#8884d8"
+              name="Response time in seconds"
+            />
+          </LineChart>
+        </ResponsiveContainer>
+
+        <div className="font-retro text-center m-10">Breakdown</div>
+
+        <div>
+          {results.map((result, index) => {
+            return (
+              <div key={index}>
+                <span>{index + 1} : </span>
+
+                {typeof result.question.question === 'string' ? (
+                  <span>{result.question.question} &nbsp;</span>
+                ) : (
+                  <span>code snippet</span>
+                )}
+
+                {result.correctAnswer ? (
+                  <span className="font-icons text-green-300">done</span>
+                ) : (
+                  <span className="font-icons text-red-300">close</span>
+                )}
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
@@ -64,6 +114,13 @@ export function Results({ results }: ResultsProps) {
 function getTotalCorrect(results: Result[]) {
   const correct = results.filter((result) => result.correctAnswer)
   return correct.length
+}
+
+function getResponseTimes(results: Result[]) {
+  return results.map((res, index) => ({
+    question: index,
+    responseTime: (res.responseTime / 1000).toFixed(1),
+  }))
 }
 
 function mapResultsToLevelSummary(results: Result[]) {
