@@ -58,7 +58,7 @@ test('show the results when there are no more questions', () => {
   userEvent.click(screen.getByText('correct 2'))
   userEvent.click(screen.getByText('next'))
 
-  expect(screen.getByText('Well done!')).toBeVisible()
+  expect(screen.getByText('Summary')).toBeVisible()
 })
 
 test('Add to the score when clicking on the correct answer', () => {
