@@ -209,19 +209,6 @@ class TestApp {
       ],
     },
     {
-      level: 2,
-      question: 'Which of the following is a valid declaration of a char?',
-      options: [
-        {
-          text: "char ch = '\\utea';",
-          correct: true,
-        },
-        { text: "char ca = 'tea';" },
-        { text: 'char cr = \u0223;' },
-        { text: "char cc = '\\itea';\n" },
-      ],
-    },
-    {
       level: 3,
       question: "What's the result of ++z + y - y + z + x++ ?",
       options: [
