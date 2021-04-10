@@ -13,6 +13,7 @@ type LocationState = {
 
 export type Result = {
   question: Question
+  topic: string
   correctAnswer: boolean
   responseTime: number
 }
@@ -66,6 +67,7 @@ export function Quiz() {
       ...results,
       {
         question: question,
+        topic: topics[quizState.topicNumber].name,
         correctAnswer: !!option.correct,
         responseTime: Date.now() - startTime,
       },

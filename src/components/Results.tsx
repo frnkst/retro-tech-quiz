@@ -8,8 +8,15 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
   Line,
+} from 'recharts'
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  ResponsiveContainer,
 } from 'recharts'
 import { maxBy, meanBy, minBy } from 'lodash'
 
@@ -22,6 +29,14 @@ type LevelSummary = {
   level: number
   correct: number
   wrong: number
+}
+
+type sumByTopic = {
+  topic: string
+  absoluteCorrect: number
+  total: number
+  percentage?: number
+  fullMark: 100
 }
 
 export function Results({ results }: ResultsProps) {
@@ -69,11 +84,39 @@ export function Results({ results }: ResultsProps) {
             <Bar dataKey="wrong" fill="#FCA5A5" />
           </BarChart>
         </ResponsiveContainer>
+      </div>
 
-        <div className="font-retro text-center m-10">
-          Response time by question
-        </div>
+      {mapToStrengths(results).length >= 3 && (
+        <>
+          <div className="font-retro text-center m-10">Strengths</div>
 
+          <div className="graph-container self-center md:w-5/6 w-screen">
+            <ResponsiveContainer width="100%" height="100%">
+              <RadarChart
+                cx="50%"
+                cy="50%"
+                outerRadius="80%"
+                data={mapToStrengths(results)}
+              >
+                <PolarGrid />
+                <PolarAngleAxis dataKey="topic" />
+                <PolarRadiusAxis />
+                <Radar
+                  name="Mike"
+                  dataKey="percentage"
+                  stroke="#8884d8"
+                  fill="#8884d8"
+                  fillOpacity={0.6}
+                />
+              </RadarChart>
+            </ResponsiveContainer>
+          </div>
+        </>
+      )}
+
+      <div className="font-retro text-center m-10">Response times</div>
+
+      <div className="graph-container self-center md:w-5/6 w-screen">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart width={500} height={300} data={getResponseTimes(results)}>
             <XAxis dataKey="question" name="Question number" />
@@ -89,30 +132,30 @@ export function Results({ results }: ResultsProps) {
             />
           </LineChart>
         </ResponsiveContainer>
+      </div>
 
-        <div className="font-retro text-center m-10">All questions</div>
+      <div className="font-retro text-center m-10">All questions</div>
 
-        <div>
-          {results.map((result, index) => {
-            return (
-              <div key={index}>
-                <span>{index} : </span>
+      <div className="graph-container self-center md:w-5/6 w-screen">
+        {results.map((result, index) => {
+          return (
+            <div key={index}>
+              <span>{index} : </span>
 
-                {typeof result.question.question === 'string' ? (
-                  <span>{result.question.question} &nbsp;</span>
-                ) : (
-                  <span>code snippet</span>
-                )}
+              {typeof result.question.question === 'string' ? (
+                <span>{result.question.question} &nbsp;</span>
+              ) : (
+                <span>code snippet</span>
+              )}
 
-                {result.correctAnswer ? (
-                  <span className="font-icons text-green-300">done</span>
-                ) : (
-                  <span className="font-icons text-red-300">close</span>
-                )}
-              </div>
-            )
-          })}
-        </div>
+              {result.correctAnswer ? (
+                <span className="font-icons text-green-300">done</span>
+              ) : (
+                <span className="font-icons text-red-300">close</span>
+              )}
+            </div>
+          )
+        })}
       </div>
     </div>
   )
@@ -138,6 +181,36 @@ function getMinResponseTime(results: Result[]) {
 function getMaxResponseTime(results: Result[]) {
   const max = maxBy(results, 'responseTime')
   return max ? (max.responseTime / 1000).toFixed(0) : ''
+}
+
+function mapToStrengths(results: Result[]) {
+  const sumByTopics: sumByTopic[] = []
+
+  results.forEach((result) => {
+    const sumByTopic = sumByTopics.find(
+      (sumByTopic) => sumByTopic.topic === result.topic
+    )
+    if (sumByTopic) {
+      if (result.correctAnswer) {
+        sumByTopic.absoluteCorrect = sumByTopic.absoluteCorrect + 1
+      }
+      sumByTopic.total = sumByTopic.total + 1
+    } else {
+      sumByTopics.push({
+        topic: result.topic,
+        absoluteCorrect: 1,
+        total: 1,
+        fullMark: 100,
+      })
+    }
+  })
+
+  sumByTopics.forEach((sumByTopic) => {
+    sumByTopic.percentage =
+      (sumByTopic.fullMark / sumByTopic.total) * sumByTopic.absoluteCorrect
+  })
+
+  return sumByTopics
 }
 
 function mapResultsToLevelSummary(results: Result[]) {
