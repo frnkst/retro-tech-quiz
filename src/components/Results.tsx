@@ -64,7 +64,7 @@ export function Results({ results }: ResultsProps) {
         </ResponsiveContainer>
 
         <div className="font-retro text-center m-10">
-          Response time by question number
+          Response time by question
         </div>
 
         <ResponsiveContainer width="100%" height="100%">
