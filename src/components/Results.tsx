@@ -11,6 +11,7 @@ import {
   ResponsiveContainer,
   Line,
 } from 'recharts'
+import { maxBy, meanBy, minBy } from 'lodash'
 
 type ResultsProps = {
   results: Result[]
@@ -33,6 +34,12 @@ export function Results({ results }: ResultsProps) {
           <div>{getTotalCorrect(results)} correct</div>
           <div>{results.length - getTotalCorrect(results)} wrong</div>
           <div>{results.length} questions answered</div>
+          <div>
+            average response time{' '}
+            {(meanBy(results, 'responseTime') / 1000).toFixed(0)} seconds
+          </div>
+          <div>fastest response was {getMinResponseTime(results)} seconds</div>
+          <div>slowest response was {getMaxResponseTime(results)} seconds</div>
         </div>
       </div>
 
@@ -83,7 +90,7 @@ export function Results({ results }: ResultsProps) {
           </LineChart>
         </ResponsiveContainer>
 
-        <div className="font-retro text-center m-10">Breakdown</div>
+        <div className="font-retro text-center m-10">All questions</div>
 
         <div>
           {results.map((result, index) => {
@@ -121,6 +128,16 @@ function getResponseTimes(results: Result[]) {
     question: index,
     responseTime: (res.responseTime / 1000).toFixed(1),
   }))
+}
+
+function getMinResponseTime(results: Result[]) {
+  const min = minBy(results, 'responseTime')
+  return min ? (min.responseTime / 1000).toFixed(0) : ''
+}
+
+function getMaxResponseTime(results: Result[]) {
+  const max = maxBy(results, 'responseTime')
+  return max ? (max.responseTime / 1000).toFixed(0) : ''
 }
 
 function mapResultsToLevelSummary(results: Result[]) {
