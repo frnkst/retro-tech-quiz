@@ -52,6 +52,13 @@ test('show the next question when clicking next', () => {
   expect(screen.getByText('wrong 2b')).toBeVisible()
 })
 
+test('show the next question when pressing the right arrow key', () => {
+  userEvent.click(screen.getByText('correct 1'))
+  userEvent.type(document.body, '{arrowright}')
+
+  expect(screen.getByText('question 2')).toBeVisible()
+})
+
 test('show the results when there are no more questions', () => {
   userEvent.click(screen.getByText('correct 1'))
   userEvent.click(screen.getByText('next'))

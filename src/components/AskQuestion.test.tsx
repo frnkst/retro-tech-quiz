@@ -59,6 +59,16 @@ test("format the code with prettier if it's javascript", () => {
   expect(screen.getByTestId('code-block')).toBeVisible()
 })
 
+test("don't format the code when it's not javascript", () => {
+  const questionWithCode: Question = {
+    ...defaultQuestion,
+    question: { code: 'const a=5; const b=5', language: 'kotlin' },
+  }
+  setup(questionWithCode)
+
+  expect(screen.getByTestId('code-block')).not.toBeVisible()
+})
+
 function setup(question: Question = defaultQuestion) {
   render(
     <AskQuestion
