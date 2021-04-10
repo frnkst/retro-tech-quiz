@@ -12,8 +12,7 @@
     "format:check": "yarn prettier --write .",
     "cypress": "cypress run --config ignoreTestFiles=\"**/screenshots.spec.ts\"",
     "cypress:screenshots": "rm -rf cypress/screenshots/screenshots.spec.ts && cypress run --spec \"cypress/integration/screenshots.spec.ts\"",
-    "lighthouse-badges": "lighthouse-badges --urls https://void0.ch -o lighthouse-badges",
-    "update:assets": "yarn format && yarn test:badges && yarn cypress:screenshots && yarn lighthouse-badges",
+    "update:assets": "yarn format && yarn test:badges && yarn cypress:screenshots",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
