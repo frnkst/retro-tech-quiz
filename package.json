@@ -54,7 +54,7 @@
     "recharts": "^2.0.9"
   },
   "devDependencies": {
-    "@craco/craco": "^6.1.1",
+    "@craco/craco": "^6.1.2",
     "@tailwindcss/postcss7-compat": "^2.1.2",
     "@testing-library/dom": "^7.30.4",
     "@testing-library/jest-dom": "^5.12.0",
