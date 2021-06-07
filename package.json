@@ -45,7 +45,7 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@babel/parser": "^7.14.1",
+    "@babel/parser": "^7.14.4",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -56,7 +56,7 @@
   "devDependencies": {
     "@craco/craco": "^6.1.2",
     "@tailwindcss/postcss7-compat": "^2.1.2",
-    "@testing-library/dom": "^7.30.4",
+    "@testing-library/dom": "^7.31.2",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.1.9",
@@ -79,6 +79,6 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "typescript": "^4.2.4",
     "wait-on": "^5.2.1",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^2.0.1"
   }
 }
