@@ -21,6 +21,7 @@ export function Start() {
         <input
           name="player"
           type="text"
+          aria-label="player name"
           autoFocus
           value={name}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

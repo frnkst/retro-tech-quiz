@@ -23,6 +23,7 @@ function someResults(): Result[] {
       question: { level: 5, question: 'bla', options: [{ text: 'test' }] },
       correctAnswer: true,
       responseTime: 1200,
+      topic: 'some topic'
     },
   ]
 }

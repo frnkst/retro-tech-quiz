@@ -3,6 +3,15 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 
+const mockHistoryPush = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useHistory: () => ({
+    push: mockHistoryPush,
+  }),
+}));
+
 beforeEach(() => {
   render(<Start />)
 })
@@ -15,8 +24,14 @@ test('show the topics', () => {
   expect(screen.getByText('Topics')).toBeVisible()
 })
 
+test('show the player input box', () => {
+  expect(screen.getByRole('textbox', {name: 'player name'})).toBeVisible()
+})
+
 test('show the player name input box', () => {
-  expect(screen.getByRole('textbox')).toBeVisible()
+  const playerNameInput = screen.getByRole('textbox', {name: 'player name'})
+  userEvent.type(playerNameInput, 'some name')
+  expect(screen.getByText('some name')).toBeVisible()
 })
 
 test('select a time', () => {
@@ -48,4 +63,10 @@ test('select some topics', () => {
 
 test('show let me in', () => {
   expect(screen.getByText('next')).toBeVisible()
+})
+
+test('start game', () => {
+  const next = screen.getByText('next')
+  userEvent.click(next)
+  expect(mockHistoryPush).toBeCalledWith('/questions', {"time": 0, "topics": []})
 })
