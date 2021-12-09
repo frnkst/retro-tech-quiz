@@ -12,7 +12,7 @@ beforeEach(() => {
   jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100)
 })
 
-test('result summary is shown', () => {
+it('result summary is shown', () => {
   render(<Results results={someResults()} />)
   expect(screen.getByText('Summary')).toBeVisible()
 })

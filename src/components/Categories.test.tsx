@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event'
 
 const selectTopicsMock = jest.fn()
 
-test('show the categories', () => {
+it('show the categories', () => {
   render(
     <Categories
       allTopics={['JavaScript', 'Kotlin']}
@@ -17,7 +17,7 @@ test('show the categories', () => {
   expect(screen.getByText('Kotlin')).toBeVisible()
 })
 
-test('select a category on click', () => {
+it('select a category on click', () => {
   render(
     <Categories
       allTopics={['JavaScript', 'Kotlin']}
@@ -31,7 +31,7 @@ test('select a category on click', () => {
   expect(selectTopicsMock).toHaveBeenCalledWith(['Kotlin'])
 })
 
-test('when an already selected item is selected again it should remove it', () => {
+it('when an already selected item is selected again it should remove it', () => {
   render(
     <Categories
       allTopics={['JavaScript', 'Kotlin']}

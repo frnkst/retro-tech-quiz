@@ -16,31 +16,31 @@ beforeEach(() => {
   render(<Start />)
 })
 
-test('show the time selection', () => {
+it('show the time selection', () => {
   expect(screen.getByText('Time')).toBeVisible()
 })
 
-test('show the topics', () => {
+it('show the topics', () => {
   expect(screen.getByText('Topics')).toBeVisible()
 })
 
-test('show the player input box', () => {
+it('show the player input box', () => {
   expect(screen.getByRole('textbox', {name: 'player name'})).toBeVisible()
 })
 
-test('show the player name input box', () => {
+it('show the player name input box', () => {
   const playerNameInput = screen.getByRole('textbox', {name: 'player name'})
   userEvent.type(playerNameInput, 'some name')
-  expect(screen.getByText('some name')).toBeVisible()
+  expect(playerNameInput).toHaveValue('some name')
 })
 
-test('select a time', () => {
+it('select a time', () => {
   const fiveMinutes = screen.getByText('05:00')
   userEvent.click(fiveMinutes)
   expect(fiveMinutes).toHaveClass('text-blue-500')
 })
 
-test('should only select one time', () => {
+it('should only select one time', () => {
   const fiveMinutes = screen.getByText('05:00')
   const tenMinutes = screen.getByText('10:00')
 
@@ -51,7 +51,7 @@ test('should only select one time', () => {
   expect(fiveMinutes).not.toHaveClass('text-blue-500')
 })
 
-test('select some topics', () => {
+it('select some topics', () => {
   const kotlin = screen.getByText('Kotlin')
   userEvent.click(kotlin)
   expect(kotlin.parentElement).toHaveClass('text-blue-500')
@@ -61,11 +61,11 @@ test('select some topics', () => {
   expect(git.parentElement).toHaveClass('text-blue-500')
 })
 
-test('show let me in', () => {
+it('show let me in', () => {
   expect(screen.getByText('next')).toBeVisible()
 })
 
-test('start game', () => {
+it('start game', () => {
   const next = screen.getByText('next')
   userEvent.click(next)
   expect(mockHistoryPush).toBeCalledWith('/questions', {"time": 0, "topics": []})

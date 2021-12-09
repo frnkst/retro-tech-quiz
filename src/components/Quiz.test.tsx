@@ -27,22 +27,22 @@ beforeEach(() => {
   )
 })
 
-test('show the timer', () => {
+it('show the timer', () => {
   expect(screen.getByText('05:00')).toBeVisible()
 })
 
-test('show the score', () => {
+it('show the score', () => {
   expect(screen.getByText('0')).toBeVisible()
 })
 
-test('show a question', () => {
+it('show a question', () => {
   expect(screen.getByText('question 1')).toBeVisible()
   expect(screen.getByText('correct 1')).toBeVisible()
   expect(screen.getByText('wrong 1a')).toBeVisible()
   expect(screen.getByText('wrong 1b')).toBeVisible()
 })
 
-test('show the next question when clicking next', () => {
+it('show the next question when clicking next', () => {
   userEvent.click(screen.getByText('correct 1'))
   userEvent.click(screen.getByText('next'))
 
@@ -52,14 +52,14 @@ test('show the next question when clicking next', () => {
   expect(screen.getByText('wrong 2b')).toBeVisible()
 })
 
-test('show the next question when pressing the right arrow key', () => {
+it('show the next question when pressing the right arrow key', () => {
   userEvent.click(screen.getByText('correct 1'))
   userEvent.type(document.body, '{arrowright}')
 
   expect(screen.getByText('question 2')).toBeVisible()
 })
 
-test('show the results when there are no more questions', () => {
+it('show the results when there are no more questions', () => {
   userEvent.click(screen.getByText('correct 1'))
   userEvent.click(screen.getByText('next'))
   userEvent.click(screen.getByText('correct 2'))
@@ -68,7 +68,7 @@ test('show the results when there are no more questions', () => {
   expect(screen.getByText('Summary')).toBeVisible()
 })
 
-test('Add to the score when clicking on the correct answer', () => {
+it('Add to the score when clicking on the correct answer', () => {
   userEvent.click(screen.getByText('correct 1'))
   expect(screen.getByText('100')).toBeVisible()
 
@@ -78,7 +78,7 @@ test('Add to the score when clicking on the correct answer', () => {
   expect(screen.getByText('200')).toBeVisible()
 })
 
-test('Subtract from the score when clicking on the wrong answer', () => {
+it('Subtract from the score when clicking on the wrong answer', () => {
   userEvent.click(screen.getByText('wrong 1a'))
   expect(screen.getByText('0')).toBeVisible()
 
