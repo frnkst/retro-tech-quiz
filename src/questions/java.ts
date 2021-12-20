@@ -1,4 +1,4 @@
-import { Topic } from '../components/Categories'
+import { Topic } from '../components/SelectTopics'
 
 export const java: Topic = {
   name: 'Java',

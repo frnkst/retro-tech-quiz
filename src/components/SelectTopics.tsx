@@ -1,14 +1,14 @@
-type TopicsProps = {
+type CategoriesProps = {
   selectTopics: (topic: string[]) => void
   selectedTopics: string[]
   allTopics: string[]
 }
 
-export function Categories({
+export function SelectTopics({
   selectTopics,
   selectedTopics,
   allTopics,
-}: TopicsProps) {
+}: CategoriesProps) {
   return (
     <div className="self-center w-5/6">
       <div className="flex flex-wrap justify-center cursor-pointer">
@@ -37,29 +37,5 @@ export function Categories({
       </div>
     </div>
   )
-}
-
-export type Topic = {
-  name: string
-  isSelected?: boolean
-  questions: Question[]
-}
-
-export type Code = {
-  code: string
-  language: string
-}
-
-export type Question = {
-  level: 1 | 2 | 3 | 4 | 5
-  question: string | Code
-  codeSnippet?: true
-  options: Option[]
-}
-
-export type Option = {
-  text: string
-  correct?: boolean
-  selected?: boolean
 }
 

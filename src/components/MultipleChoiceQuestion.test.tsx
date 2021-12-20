@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
-import { AskQuestion } from './AskQuestion'
+import { MultipleChoiceQuestion } from './MultipleChoiceQuestion'
 import userEvent from '@testing-library/user-event'
-import { Question } from './Categories'
+import { Question } from '../services/question-service'
 
 const selectOption = jest.fn()
 let defaultQuestion: Question
@@ -10,7 +10,7 @@ beforeEach(() => {
   defaultQuestion = someQuestion()
 })
 
-it('show the first question and answers', () => {
+it('show the first question and it\'s options', () => {
   setup()
 
   expect(screen.getByText(defaultQuestion.question as string)).toBeVisible()
@@ -19,7 +19,7 @@ it('show the first question and answers', () => {
   expect(screen.getByText(defaultQuestion.options[2].text)).toBeVisible()
 })
 
-it('should call selectOption on click', () => {
+it('should select an option on click', () => {
   setup()
   userEvent.click(screen.getByText(defaultQuestion.options[0].text))
 
@@ -61,7 +61,7 @@ it("format the code with prettier if it's javascript", () => {
 
 function setup(question: Question = defaultQuestion) {
   render(
-    <AskQuestion
+    <MultipleChoiceQuestion
       topicName={'JS'}
       question={question}
       selectOption={selectOption}

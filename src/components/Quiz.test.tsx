@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { Quiz } from './Quiz'
-import { Topic } from './Categories'
 import userEvent from '@testing-library/user-event'
 import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
+import { Topic } from '../services/question-service'
 
 beforeAll(() => {
   window.ResizeObserver = ResizeObserver

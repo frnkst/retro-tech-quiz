@@ -1,9 +1,9 @@
-import { Code, Option, Question } from './Categories'
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import prettier from 'prettier/standalone'
 import babylon from 'prettier/parser-babel'
+import { Code, Option, Question } from '../services/question-service'
 
 type QuestionProps = {
   topicName: string
@@ -12,7 +12,7 @@ type QuestionProps = {
   showResult: boolean
 }
 
-export const AskQuestion = function ({
+export const MultipleChoiceQuestion = function ({
   topicName,
   question,
   selectOption,
@@ -75,7 +75,7 @@ function getLevel(level: number): string {
   return 'Hard'
 }
 
-const formatCodeBlock = (code: Code) => {
+function formatCodeBlock(code: Code) {
   if (code.language === 'javascript') {
     return prettier.format(code.code, {
       parser: 'babel',

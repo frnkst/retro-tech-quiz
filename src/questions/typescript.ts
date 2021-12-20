@@ -1,4 +1,4 @@
-import { Topic } from '../components/Categories'
+import { Topic } from '../components/SelectTopics'
 
 export const typescript: Topic = {
   name: 'TS',
