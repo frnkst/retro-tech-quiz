@@ -1,4 +1,4 @@
-import { Topic } from '../components/SelectTopics'
+import { Topic } from '../services/question-service'
 
 export const javascript: Topic = {
   name: 'JS',
