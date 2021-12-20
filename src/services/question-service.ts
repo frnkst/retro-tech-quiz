@@ -7,18 +7,20 @@ import { java } from '../questions/java'
 import { typescript } from '../questions/typescript'
 import { git } from '../questions/git'
 
-export function prepareTopics(selectedTopics: string[]) {
+export function prepareTopics(selectedTopics: string[]): Topic[] {
   const filteredTopics = getAllTopicNames().filter((topicName) =>
     selectedTopics.includes(topicName)
   )
 
-  shuffleQuestionsAndOptions(filteredTopics)
-  return filteredTopics
+  const topics = getTopicsByName(filteredTopics)
+
+  shuffleQuestionsAndOptions(topics)
+  return topics
 }
 
-function shuffleQuestionsAndOptions(topicNames: string[]) {
-  topicNames.forEach((topicName) => {
-    const questions = getQuestionsForTopic(topicName)
+function shuffleQuestionsAndOptions(topics: Topic[]) {
+  topics.forEach((topic) => {
+    const questions = getQuestionsForTopic(topic.name)
 
     questions.forEach((question) => {
       question.options = shuffle(question.options)
@@ -30,6 +32,10 @@ function shuffleQuestionsAndOptions(topicNames: string[]) {
 
 export function getAllTopics(): Topic[] {
   return [javascript, webdevelopment, kotlin, java, typescript, git];
+}
+
+export function getTopicsByName(topicNames: string []): Topic[] {
+  return [javascript, webdevelopment, kotlin, java, typescript, git].filter(topic => topicNames.includes(topic.name));
 }
 
 export function getAllTopicNames(): string[] {
