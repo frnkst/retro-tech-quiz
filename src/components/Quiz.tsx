@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Timer } from './Timer'
 import { Score } from './Score'
-import { AskQuestion } from './AskQuestion'
-import { Option, Question, Topic } from './Categories'
+import { MultipleChoiceQuestion } from './MultipleChoiceQuestion'
 import { Results } from './Results'
+import { Option, Question, Topic } from '../services/question-service'
 
 type LocationState = {
   topics: Topic[]
@@ -111,7 +111,7 @@ export function Quiz() {
         <Score score={quizState.score.toString()} />
       </div>
       <div>
-        <AskQuestion
+        <MultipleChoiceQuestion
           topicName={topics[quizState.topicNumber].name}
           question={question}
           selectOption={selectOption}

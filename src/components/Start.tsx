@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
-import { Categories, getAllTopics } from './Categories'
+import { SelectTopics } from './SelectTopics'
 import { useHistory } from 'react-router-dom'
 import { History } from 'history'
-import { prepareTopics } from '../services/question-service'
+import { getAllTopicNames, prepareTopics } from '../services/question-service'
 
 export function Start() {
   const [time, setTime] = useState<string>('00:00')
   const [name, setName] = useState<string>('')
   const [selectedTopics, setSelectedTopics] = useState<string[]>([])
   const history = useHistory<History>()
-
-  const allTopics = getAllTopics().map((topic) => topic.name)
 
   return (
     <div className="mx-auto w-96 sm:w-screen font-retro md:text-2xl text-base">
@@ -33,10 +31,10 @@ export function Start() {
         {getTimeSelection(time, setTime)}
 
         <div className="md:py-10 py-3 text-center text-gray-500">Topics</div>
-        <Categories
+        <SelectTopics
           selectTopics={(topic: string[]) => setSelectedTopics([...topic])}
           selectedTopics={selectedTopics}
-          allTopics={allTopics}
+          allTopics={getAllTopicNames()}
         />
       </div>
       <div className="py-10 text-gray-500 cursor-pointer">

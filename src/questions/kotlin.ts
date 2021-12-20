@@ -1,4 +1,4 @@
-import { Topic } from '../components/Categories'
+import { Topic } from '../services/question-service'
 
 export const kotlin: Topic = {
   name: 'Kotlin',

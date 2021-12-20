@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
-import { Categories } from './Categories'
+import { SelectTopics } from './SelectTopics'
 import userEvent from '@testing-library/user-event'
 
 const selectTopicsMock = jest.fn()
 
 it('show the categories', () => {
   render(
-    <Categories
+    <SelectTopics
       allTopics={['JavaScript', 'Kotlin']}
       selectedTopics={[]}
       selectTopics={() => void 0}
@@ -19,7 +19,7 @@ it('show the categories', () => {
 
 it('select a category on click', () => {
   render(
-    <Categories
+    <SelectTopics
       allTopics={['JavaScript', 'Kotlin']}
       selectedTopics={[]}
       selectTopics={selectTopicsMock}
@@ -33,7 +33,7 @@ it('select a category on click', () => {
 
 it('when an already selected item is selected again it should remove it', () => {
   render(
-    <Categories
+    <SelectTopics
       allTopics={['JavaScript', 'Kotlin']}
       selectedTopics={['Kotlin']}
       selectTopics={selectTopicsMock}

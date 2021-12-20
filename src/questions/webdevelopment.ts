@@ -1,4 +1,4 @@
-import { Topic } from '../components/Categories'
+import { Topic } from '../services/question-service'
 
 export const webdevelopment: Topic = {
   name: 'Web',
